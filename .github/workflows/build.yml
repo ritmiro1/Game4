@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   build:
@@ -24,14 +25,30 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Compile and package
+        id: build
+        continue-on-error: true
         run: |
           chmod +x gradlew
-          ./gradlew build --stacktrace
+          ./gradlew build --console=plain --stacktrace 2>&1 | tee gradle.log
+          exit ${PIPESTATUS[0]}
+
+      - name: Report build errors
+        if: steps.build.outcome != 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          grep -nE "error:|warning: \[removal\]|What went wrong|FAILED|Caused by|Execution failed|Could not resolve" gradle.log | head -150 > errors.txt || true
+          printf '\n--- last 40 lines ---\n' >> errors.txt
+          tail -40 gradle.log >> errors.txt
+          head -c 60000 errors.txt > body.txt
+          gh api "repos/${{ github.repository }}/issues/1/comments" -f body="$(cat body.txt)" > /dev/null
 
       - name: Show outputs
+        if: steps.build.outcome == 'success'
         run: ls -la build/libs
 
       - name: Upload jar
+        if: steps.build.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: hollowlight-1.0.0
@@ -39,7 +56,7 @@ jobs:
           if-no-files-found: error
 
       - name: Attach jar to release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: steps.build.outcome == 'success' && startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: build/libs/hollowlight-1.0.0.jar
