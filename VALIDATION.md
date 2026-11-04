@@ -67,8 +67,8 @@ The project now compiles and packages on GitHub Actions with JDK 21 (Temurin):
 
 ```
 ./gradlew build   ->  BUILD SUCCESSFUL
-artifact          ->  hollowlight-1.0.1.jar (3,196,443 bytes)
-release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.2
+artifact          ->  hollowlight-1.0.2.jar (3,196,644 bytes)
+release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.3
 
 ```
 
@@ -88,8 +88,22 @@ removes the second registration, so mod initialisation now completes — blocks,
 sounds, particles, payloads, screen handlers and the labyrinth manager all register without
 complaint.
 
+1.0.1 got further — mod initialisation completed — and then died on the loading screen:
+a block model used the illegal face name `"all"`, and the drowned choir's `ModelPart` tree was
+built one nesting level too shallow, so its renderer threw `Can't find part head` while the
+resource manager was reloading. A single entity model that throws during construction aborts the
+whole reload, which is what a black screen looks like from the outside.
+
+1.0.2 fixes both at the generator and adds `tools/check_assets.py` to CI, ahead of Gradle. It
+verifies block model face names and texture references, blockstate→model wiring, item models,
+entity `ModelPart` paths against the tree the model data actually builds, `sounds.json` against
+both the audio files and `ModSounds`, translation keys, loot-table item ids, and the
+dimension/dimension_type/biome data. That check is the reason the model bug can no longer reach a
+player: reintroducing it fails the build with
+`DrownedChoirEntityModel.java: constructor walks jaw but root has no child 'head'`.
+
 Still unproven: world generation, entity behaviour, sound design and every GUI screen have
-only been compiled, never watched running.
+only been compiled and statically checked, never watched running.
 
 
 There is no Java compiler and no Minecraft artifact in this authoring
