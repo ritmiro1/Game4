@@ -32,39 +32,39 @@ public final class ModEntities {
 
     public static final EntityType<HollowedEntity> HOLLOWED = register("hollowed",
             EntityType.Builder.create(HollowedEntity::new, SpawnGroup.MONSTER)
-                    .dimensions(0.7F, 1.9F).maxTrackingRange(10).build());
+                    .dimensions(0.7F, 1.9F).maxTrackingRange(10));
 
     public static final EntityType<WickmothEntity> WICKMOTH = register("wickmoth",
             EntityType.Builder.create(WickmothEntity::new, SpawnGroup.AMBIENT)
-                    .dimensions(0.6F, 0.6F).maxTrackingRange(8).build());
+                    .dimensions(0.6F, 0.6F).maxTrackingRange(8));
 
     public static final EntityType<PaperfaceEntity> PAPERFACE = register("paperface",
             EntityType.Builder.create(PaperfaceEntity::new, SpawnGroup.MONSTER)
-                    .dimensions(0.7F, 2.2F).maxTrackingRange(12).build());
+                    .dimensions(0.7F, 2.2F).maxTrackingRange(12));
 
     public static final EntityType<StitcherEntity> STITCHER = register("stitcher",
             EntityType.Builder.create(StitcherEntity::new, SpawnGroup.MONSTER)
-                    .dimensions(1.2F, 3.2F).maxTrackingRange(12).build());
+                    .dimensions(1.2F, 3.2F).maxTrackingRange(12));
 
     public static final EntityType<DrownedChoirEntity> DROWNED_CHOIR = register("drowned_choir",
             EntityType.Builder.create(DrownedChoirEntity::new, SpawnGroup.MONSTER)
-                    .dimensions(0.8F, 1.8F).maxTrackingRange(10).build());
+                    .dimensions(0.8F, 1.8F).maxTrackingRange(10));
 
     public static final EntityType<WeepingOneEntity> WEEPING_ONE = register("weeping_one",
             EntityType.Builder.create(WeepingOneEntity::new, SpawnGroup.CREATURE)
-                    .dimensions(0.8F, 1.5F).maxTrackingRange(10).build());
+                    .dimensions(0.8F, 1.5F).maxTrackingRange(10));
 
     public static final EntityType<EchoEntity> ECHO = register("echo",
             EntityType.Builder.create(EchoEntity::new, SpawnGroup.AMBIENT)
-                    .dimensions(0.6F, 1.8F).maxTrackingRange(10).build());
+                    .dimensions(0.6F, 1.8F).maxTrackingRange(10));
 
     public static final EntityType<AshMothEntity> ASH_MOTH = register("ash_moth",
             EntityType.Builder.create(AshMothEntity::new, SpawnGroup.AMBIENT)
-                    .dimensions(0.3F, 0.3F).maxTrackingRange(6).build());
+                    .dimensions(0.3F, 0.3F).maxTrackingRange(6));
 
     public static final EntityType<LampkeeperEntity> LAMPKEEPER = register("lampkeeper",
             EntityType.Builder.create(LampkeeperEntity::new, SpawnGroup.MONSTER)
-                    .dimensions(1.8F, 4.2F).maxTrackingRange(16).makeFireImmune().build());
+                    .dimensions(1.8F, 4.2F).maxTrackingRange(16).makeFireImmune());
 
     private ModEntities() {
     }

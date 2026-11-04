@@ -15,6 +15,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -45,8 +46,8 @@ public class SealedGateBlock extends Block {
     }
 
     @Override
-    protected ActionResult onUse(ItemStack stack, BlockState state, World world, BlockPos pos,
-                                 PlayerEntity player, BlockHitResult hit) {
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
+                                 PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(OPEN)) {
             return ActionResult.PASS;
         }
@@ -54,7 +55,6 @@ public class SealedGateBlock extends Block {
             return ActionResult.SUCCESS;
         }
         boolean unlocked = stack.getItem() instanceof LabyrinthKeyItem key
-                && key.tier().canOpen(world, pos)
                 && player instanceof ServerPlayerEntity serverPlayer
                 && key.tryUnlock(serverPlayer, world, pos);
 

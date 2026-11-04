@@ -28,6 +28,7 @@ public class PaperfaceEntityModel extends EntityModel<HollowlightEntityRenderSta
     private final ModelPart leg_right;
 
     public PaperfaceEntityModel(ModelPart root) {
+        super(root);
         this.body = root.getChild("body");
         this.head = root.getChild("body").getChild("head");
         this.arm_left = root.getChild("body").getChild("arm_left");
@@ -76,9 +77,9 @@ public class PaperfaceEntityModel extends EntityModel<HollowlightEntityRenderSta
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
-        this.body.render(matrices, vertices, light, overlay, color);
-        this.leg_left.render(matrices, vertices, light, overlay, color);
-        this.leg_right.render(matrices, vertices, light, overlay, color);
+    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
+        this.body.render(matrices, vertices, light, overlay);
+        this.leg_left.render(matrices, vertices, light, overlay);
+        this.leg_right.render(matrices, vertices, light, overlay);
     }
 }

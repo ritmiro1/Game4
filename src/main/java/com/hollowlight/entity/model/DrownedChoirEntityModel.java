@@ -28,6 +28,7 @@ public class DrownedChoirEntityModel extends EntityModel<HollowlightEntityRender
     private final ModelPart tail;
 
     public DrownedChoirEntityModel(ModelPart root) {
+        super(root);
         this.body = root.getChild("body");
         this.head = root.getChild("body").getChild("head");
         this.jaw = root.getChild("head").getChild("jaw");
@@ -71,8 +72,8 @@ public class DrownedChoirEntityModel extends EntityModel<HollowlightEntityRender
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
-        this.body.render(matrices, vertices, light, overlay, color);
-        this.tail.render(matrices, vertices, light, overlay, color);
+    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
+        this.body.render(matrices, vertices, light, overlay);
+        this.tail.render(matrices, vertices, light, overlay);
     }
 }

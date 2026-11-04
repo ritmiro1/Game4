@@ -50,7 +50,7 @@ public class FlaskItem extends Item {
             player.getWorld().playSound(null, player.getBlockPos(), ModSounds.LANTERN_LIGHT,
                     SoundCategory.PLAYERS, 0.9F, 1.35F);
             stack.decrementUnlessCreative(1, player);
-            player.getItemCooldownManager().set(this, 20);
+            player.getItemCooldownManager().set(stack, 20);
         }
         return (world.isClient() ? ActionResult.SUCCESS : ActionResult.SUCCESS_SERVER);
     }

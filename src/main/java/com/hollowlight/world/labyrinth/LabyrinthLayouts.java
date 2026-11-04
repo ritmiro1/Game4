@@ -52,17 +52,29 @@ public final class LabyrinthLayouts {
                 config.labyrinthFloorY, config.ceilingScale));
     }
 
+    /** The seed the integrated/dedicated server reported at start-up. */
+    private static volatile long worldSeed;
+
+    public static void setWorldSeed(long seed) {
+        worldSeed = seed;
+        CACHE.clear();
+    }
+
+    public static long worldSeed() {
+        return worldSeed;
+    }
+
     public static LabyrinthLayout layout(World world) {
         int layer = layerOfWorld(world);
         if (layer < 1) {
             return null;
         }
-        return layout(layer, world.getSeed());
+        return layout(layer, worldSeed());
     }
 
     /** Fog-of-war friendly landing point: the middle of the landing room, one block above floor. */
     public static BlockPos landingPos(World world, int layer) {
-        LabyrinthLayout layout = layout(layer, world.getSeed());
+        LabyrinthLayout layout = layout(layer, worldSeed());
         return new BlockPos(layout.landingCellX() * LabyrinthLayout.PITCH + 3,
                 layout.floorY(), layout.landingCellZ() * LabyrinthLayout.PITCH + 3);
     }

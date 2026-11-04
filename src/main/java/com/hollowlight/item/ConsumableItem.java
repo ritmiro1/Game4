@@ -55,7 +55,7 @@ public class ConsumableItem extends Item {
                 player.addStatusEffect(new StatusEffectInstance(effect));
             }
             if (drain) {
-                player.getItemCooldownManager().set(this, 40);
+                player.getItemCooldownManager().set(stack, 40);
             }
             world.playSound(null, player.getBlockPos(),
                     drain ? ModSounds.MEMORY_RETURN : ModSounds.PAGE_TURN,

@@ -44,7 +44,7 @@ public final class SanityHud {
 
         int x = context.getScaledWindowWidth() / 2 - 91;
         int y = context.getScaledWindowHeight() - 46;
-        context.drawTexture(TEXTURE, x, y, 0.0F, 0.0F, 12, 12, 16, 16);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x, y, 0.0F, 0.0F, 12, 12, 16, 16);
         int barWidth = (int) (48.0F * (sanity / 100.0F));
         context.fill(x + 14, y + 3, x + 14 + 48, y + 9, 0x66000000);
         int colour = sanity > 60.0F ? 0xFFE0B45C : sanity > 30.0F ? 0xFFB98241 : 0xFF8C3A2E;

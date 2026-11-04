@@ -42,7 +42,7 @@ public class WickbowItem extends Item {
     @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
-        if (user.getItemCooldownManager().isCoolingDown(this)) {
+        if (user.getItemCooldownManager().isCoolingDown(stack)) {
             return ActionResult.PASS;
         }
         boolean hasBolt = user.getAbilities().creativeMode
@@ -58,7 +58,7 @@ public class WickbowItem extends Item {
 
         if (!world.isClient() && user instanceof ServerPlayerEntity player) {
             consumeBolt(player);
-            player.getItemCooldownManager().set(this, 14);
+            player.getItemCooldownManager().set(stack, 14);
             world.playSound(null, player.getBlockPos(), ModSounds.LANTERN_LIGHT, SoundCategory.PLAYERS, 0.7F, 1.6F);
 
             Vec3d start = player.getEyePos();
@@ -88,7 +88,7 @@ public class WickbowItem extends Item {
                 }
                 if (victim instanceof LivingEntity living) {
                     end = living.getPos().add(0.0, living.getHeight() * 0.5, 0.0);
-                    living.damage(serverWorld.getDamageSources().indirectMagic(player, player), DAMAGE);
+                    living.damage(serverWorld, serverWorld.getDamageSources().indirectMagic(player, player), DAMAGE);
                     living.setOnFireFor(2);
                 }
                 for (int i = 0; i <= 40; i++) {

@@ -42,7 +42,7 @@ public class WickmothEntity extends PathAwareEntity {
         return PathAwareEntity.createMobAttributes()
                 .add(EntityAttributes.MAX_HEALTH, 6.0)
                 .add(EntityAttributes.MOVEMENT_SPEED, 0.32)
-                .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.4);
+                .add(EntityAttributes.FLYING_SPEED, 0.4);
     }
 
     @Override

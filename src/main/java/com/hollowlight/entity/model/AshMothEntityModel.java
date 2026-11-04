@@ -25,6 +25,7 @@ public class AshMothEntityModel extends EntityModel<HollowlightEntityRenderState
     private final ModelPart wing_right;
 
     public AshMothEntityModel(ModelPart root) {
+        super(root);
         this.body = root.getChild("body");
         this.wing_left = root.getChild("body").getChild("wing_left");
         this.wing_right = root.getChild("body").getChild("wing_right");
@@ -56,7 +57,7 @@ public class AshMothEntityModel extends EntityModel<HollowlightEntityRenderState
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
-        this.body.render(matrices, vertices, light, overlay, color);
+    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
+        this.body.render(matrices, vertices, light, overlay);
     }
 }

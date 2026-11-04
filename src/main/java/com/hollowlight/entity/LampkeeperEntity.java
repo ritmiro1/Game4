@@ -119,7 +119,15 @@ public class LampkeeperEntity extends HostileEntity {
             phaseCooldown--;
         }
 
-        PlayerEntity target = this.getClosestPlayer(this, 40.0);
+        PlayerEntity target = null;
+        double bestDistance = 40.0 * 40.0;
+        for (PlayerEntity candidate : this.getWorld().getPlayers()) {
+            double distance = candidate.squaredDistanceTo(this);
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                target = candidate;
+            }
+        }
         if (target == null) {
             return;
         }

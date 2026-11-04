@@ -5,6 +5,7 @@ import com.hollowlight.registry.ModPayloads;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -52,7 +53,7 @@ public class EndingChoiceScreen extends Screen {
         this.renderBackground(context, mouseX, mouseY, delta);
         int left = (this.width - WIDTH) / 2;
         int top = (this.height - HEIGHT) / 2;
-        context.drawTexture(TEXTURE, left, top, 0.0F, 0.0F, WIDTH, HEIGHT, 280, 180);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, left, top, 0.0F, 0.0F, WIDTH, HEIGHT, 280, 180);
         context.drawWrappedText(this.textRenderer, Text.translatable("gui.hollowlight.ending.body"),
                 left + 20, top + 18, WIDTH - 40, 0xC9B994, false);
         super.render(context, mouseX, mouseY, delta);

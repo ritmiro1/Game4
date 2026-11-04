@@ -37,7 +37,7 @@ public class MusicBoxItem extends Item {
             SanityManager.restore(player, 12.0F);
             StoryManager.discover(player, "music_box_tune");
             StoryManager.playDiscoverSound(player);
-            player.getItemCooldownManager().set(this, 400);
+            player.getItemCooldownManager().set(stack, 400);
             com.hollowlight.horror.HorrorDirector.onLoudNoise(player, 30.0);
         }
         return (world.isClient() ? ActionResult.SUCCESS : ActionResult.SUCCESS_SERVER);

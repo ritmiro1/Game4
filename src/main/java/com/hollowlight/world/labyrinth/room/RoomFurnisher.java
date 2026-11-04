@@ -400,7 +400,7 @@ public final class RoomFurnisher {
         int cz = (z1 + z2) / 2;
         disc(canvas, cx, cz, 10, floor - 1, palette.floor());
         disc(canvas, cx, cz, 4, floor, palette.accent());
-        disc(canvas, cx, cz, 4, floor - 1, Blocks.HEART_CRYSTAL_BLOCK.getDefaultState());
+        disc(canvas, cx, cz, 4, floor - 1, ModBlocks.HEART_CRYSTAL_BLOCK.getDefaultState());
         ring(canvas, cx, cz, 10, floor - 1, palette.accent());
         ring(canvas, cx, cz, 6, floor, Blocks.CHISELED_DEEPSLATE.getDefaultState());
         // Twelve pillars, in the round, each one lit from within.

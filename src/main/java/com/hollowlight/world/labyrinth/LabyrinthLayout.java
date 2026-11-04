@@ -162,12 +162,12 @@ public final class LabyrinthLayout {
             for (int cz = 0; cz < height; cz++) {
                 int index = cz * width + cx;
                 byte roomIndex = roomIndices[index];
+                int hash = hash(cx, cz, layer);
                 int ceiling;
                 if (roomIndex >= 0) {
                     RoomKind kind = rooms.get(roomIndex).kind();
                     ceiling = Math.round(kind.ceilingHeight() * ceilingScale);
                 } else {
-                    int hash = hash(cx, cz, layer);
                     ceiling = 4 + Math.floorMod(hash, 5);
                     // Occasional tall corridor: a place where the ceiling goes up and out of
                     // the lamplight, which is where the horror lives.

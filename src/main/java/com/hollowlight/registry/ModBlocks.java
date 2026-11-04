@@ -117,7 +117,7 @@ public final class ModBlocks {
     public static final Block INSCRIPTION_STONE = register("inscription_stone",
             InscriptionBlock::new, stone(MapColor.STONE_GRAY, 2.0F, 8.0F, BlockSoundGroup.DEEPSLATE));
     public static final Block WHISPERING_STONE = register("whispering_stone",
-            WhisperingStoneBlock::new, AbstractBlock.Settings.create().mapColor(MapColor.DARK_GRAY)
+            WhisperingStoneBlock::new, AbstractBlock.Settings.create().mapColor(MapColor.GRAY)
                     .strength(2.2F, 8.0F).requiresTool().ticksRandomly()
                     .sounds(BlockSoundGroup.DEEPSLATE));
     public static final Block THRESHOLD_GATE = register("threshold_gate",

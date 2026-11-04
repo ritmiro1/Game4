@@ -14,8 +14,10 @@ import com.hollowlight.registry.ModWorldgen;
 import com.hollowlight.sanity.AmbienceDirector;
 import com.hollowlight.sanity.SanityManager;
 import com.hollowlight.story.StoryManager;
+import com.hollowlight.world.labyrinth.LabyrinthLayouts;
 import com.hollowlight.world.labyrinth.LabyrinthManager;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +64,10 @@ public final class Hollowlight implements ModInitializer {
         AmbienceDirector.bootstrap();
         StoryManager.bootstrap();
         HorrorDirector.bootstrap();
+
+        // The labyrinth is a pure function of the world seed; remember it when a server starts.
+        ServerLifecycleEvents.SERVER_STARTED.register(server ->
+                LabyrinthLayouts.setWorldSeed(server.getOverworld().getSeed()));
 
         LOGGER.info("Hollowlight finished loading {} blocks, {} items and {} entities.",
                 ModBlocks.all().size(), ModItems.all().size(), ModEntities.all().size());

@@ -30,6 +30,7 @@ public class LampkeeperEntityModel extends EntityModel<HollowlightEntityRenderSt
     private final ModelPart lamp;
 
     public LampkeeperEntityModel(ModelPart root) {
+        super(root);
         this.body = root.getChild("body");
         this.head = root.getChild("body").getChild("head");
         this.arm_left = root.getChild("body").getChild("arm_left");
@@ -87,8 +88,8 @@ public class LampkeeperEntityModel extends EntityModel<HollowlightEntityRenderSt
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
-        this.body.render(matrices, vertices, light, overlay, color);
-        this.skirt.render(matrices, vertices, light, overlay, color);
+    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
+        this.body.render(matrices, vertices, light, overlay);
+        this.skirt.render(matrices, vertices, light, overlay);
     }
 }

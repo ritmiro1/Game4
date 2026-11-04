@@ -157,7 +157,7 @@ public final class ModItems {
                         new EntityAttributeModifier(Hollowlight.id("base_attack_damage"), damage,
                                 EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND)
-                .add(EntityAttributes.GENERIC_ATTACK_SPEED,
+                .add(EntityAttributes.ATTACK_SPEED,
                         new EntityAttributeModifier(Hollowlight.id("base_attack_speed"), speedDelta,
                                 EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND)

@@ -25,6 +25,7 @@ public class StitcherRenderer
     @Override
     public void updateRenderState(StitcherEntity entity, HollowlightEntityRenderState state, float tickDelta) {
         super.updateRenderState(entity, state, tickDelta);
+        state.cameraDistance = entity.distanceTo(this.dispatcher.camera.getFocusedEntity());
     }
 
     @Override

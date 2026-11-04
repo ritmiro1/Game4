@@ -303,6 +303,7 @@ def emit_model(name, spec):
         lines.append("    private final ModelPart " + part.name + ";")
     lines.append("")
     lines.append("    public " + class_name + "(ModelPart root) {")
+    lines.append("        super(root);")
     for part in parts:
         if part.parent is None:
             lines.append("        this." + part.name + " = root.getChild(\"" + part.name + "\");")
@@ -362,9 +363,9 @@ def emit_model(name, spec):
     lines.append("")
     lines.append("    @Override")
     lines.append("    public void render(MatrixStack matrices, VertexConsumer vertices, int light,"
-                 " int overlay, int color) {")
+                 " int overlay) {")
     for part in top_parts:
-        lines.append("        this." + part.name + ".render(matrices, vertices, light, overlay, color);")
+        lines.append("        this." + part.name + ".render(matrices, vertices, light, overlay);")
     lines.append("    }")
     lines.append("}")
 
