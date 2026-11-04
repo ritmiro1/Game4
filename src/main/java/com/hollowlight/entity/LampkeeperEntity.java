@@ -83,12 +83,10 @@ public class LampkeeperEntity extends HostileEntity {
         return true;
     }
 
-    @Override
     public ServerBossBar getBossBar() {
         return this.bossBar;
     }
 
-    @Override
     public void setBossBar(ServerBossBar bossBar) {
         // The bar is created with the entity and never replaced.
     }

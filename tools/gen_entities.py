@@ -278,7 +278,7 @@ def emit_model(name, spec):
     lines = []
     lines.append("package com.hollowlight.entity.model;")
     lines.append("")
-    lines.append("import com.hollowlight.entity." + entity_class + ";")
+    lines.append("import com.hollowlight.entity.renderer.HollowlightEntityRenderState;")
     lines.append("import net.minecraft.client.model.ModelData;")
     lines.append("import net.minecraft.client.model.ModelPart;")
     lines.append("import net.minecraft.client.model.ModelPartBuilder;")
@@ -297,7 +297,7 @@ def emit_model(name, spec):
                  + str(spec["size"]) + ") from a single geometry spec, so the UV")
     lines.append(" * layout of the sheet and the cuboids here are guaranteed to agree.</p>")
     lines.append(" */")
-    lines.append("public class " + class_name + " extends EntityModel<" + entity_class + "> {")
+    lines.append("public class " + class_name + " extends EntityModel<HollowlightEntityRenderState> {")
     lines.append("")
     for part in parts:
         lines.append("    private final ModelPart " + part.name + ";")
@@ -328,9 +328,12 @@ def emit_model(name, spec):
     lines.append("    }")
     lines.append("")
     lines.append("    @Override")
-    lines.append("    public void setAngles(" + entity_class + " entity, float limbAngle,"
-                 " float limbDistance,")
-    lines.append("                     float animationProgress, float headYaw, float headPitch) {")
+    lines.append("    public void setAngles(HollowlightEntityRenderState state) {")
+    lines.append("        float limbAngle = state.limbFrequency;")
+    lines.append("        float limbDistance = state.limbAmplitudeMultiplier;")
+    lines.append("        float animationProgress = state.age;")
+    lines.append("        float headYaw = state.yawDegrees;")
+    lines.append("        float headPitch = state.pitch;")
     swing = spec["swing"]
     if swing:
         for index, part_name in enumerate(swing):
@@ -386,6 +389,40 @@ def transform(part):
     return "ModelTransform.pivot(" + ", ".join(java_float(v) for v in (x, y, z)) + ")"
 
 
+RENDER_STATE = """package com.hollowlight.entity.renderer;
+
+import net.minecraft.client.render.entity.state.MobEntityRenderState;
+
+/**
+ * One render state shared by the nine residents.
+ *
+ * <p>Minecraft 1.21.4 renders from immutable per-frame state objects rather than from live
+ * entities, so anything an animation needs has to be copied into a state object first. The mod
+ * needs very little: a few per-entity extras that the generated models read.</p>
+ */
+public class HollowlightEntityRenderState extends MobEntityRenderState {
+
+    /** 0..1, how lit this entity currently is (used to bob the Lamplighter's lantern). */
+    public float glow;
+
+    /** Current story phase for the boss; 0 for everything else. */
+    public int phase;
+
+    /** Distance to the camera, in blocks; used to thin out ambient mobs that are too close. */
+    public float cameraDistance;
+}
+"""
+
+
+def emit_render_state():
+    directory = os.path.join(MODEL_DIR, os.pardir, "renderer")
+    directory = os.path.abspath(directory)
+    path = os.path.join(directory, "HollowlightEntityRenderState.java")
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(RENDER_STATE)
+    return "HollowlightEntityRenderState"
+
+
 def emit_renderer(name, spec):
     class_name = "".join(part.capitalize() for part in name.split("_"))
     entity_class = class_name + "Entity"
@@ -396,14 +433,13 @@ def emit_renderer(name, spec):
 import com.hollowlight.entity.ModEntityModels;
 import com.hollowlight.entity.{entity_class};
 import com.hollowlight.entity.model.{model_class};
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 /** Renderer for {{@link {entity_class}}}. */
-public class {class_name}Renderer extends MobEntityRenderer<{entity_class}, {model_class}> {{
+public class {class_name}Renderer
+        extends MobEntityRenderer<{entity_class}, HollowlightEntityRenderState, {model_class}> {{
 
     private static final Identifier TEXTURE = Identifier.of("hollowlight", "textures/entity/{name}.png");
 
@@ -412,21 +448,22 @@ public class {class_name}Renderer extends MobEntityRenderer<{entity_class}, {mod
     }}
 
     @Override
-    public Identifier getTexture({entity_class} entity) {{
+    public HollowlightEntityRenderState createRenderState() {{
+        return new HollowlightEntityRenderState();
+    }}
+
+    @Override
+    public void updateRenderState({entity_class} entity, HollowlightEntityRenderState state, float tickDelta) {{
+        super.updateRenderState(entity, state, tickDelta);
+        state.cameraDistance = entity.distanceTo(this.dispatcher.camera.getFocusedEntity());
+    }}
+
+    @Override
+    public Identifier getTexture(HollowlightEntityRenderState state) {{
         return TEXTURE;
     }}
+}}
 """
-    if name == "echo":
-        source += """
-    @Override
-    public void render(""" + entity_class + """ entity, float yaw, float tickDelta, MatrixStack matrices,
-                       VertexConsumerProvider vertexConsumers, int light) {
-        // Echoes are recollections, not bodies: they are drawn at reduced opacity by the alpha
-        // already baked into their texture, and they never cast a shadow.
-        super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
-    }
-"""
-    source += "}\n"
     path = os.path.join(RENDERER_DIR, class_name + "Renderer.java")
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(source)
@@ -480,6 +517,7 @@ def main():
         image.save(os.path.join(ROOT, name + ".png"))
         emit_model(name, spec)
         emit_renderer(name, spec)
+    emit_render_state()
     emit_model_registry(names)
     print("entities:", ", ".join(names))
 

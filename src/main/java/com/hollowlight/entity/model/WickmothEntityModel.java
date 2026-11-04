@@ -1,6 +1,6 @@
 package com.hollowlight.entity.model;
 
-import com.hollowlight.entity.WickmothEntity;
+import com.hollowlight.entity.renderer.HollowlightEntityRenderState;
 import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.ModelPartBuilder;
@@ -18,7 +18,7 @@ import net.minecraft.util.math.MathHelper;
  * <p>Generated together with its texture (texture size 32x32) from a single geometry spec, so the UV
  * layout of the sheet and the cuboids here are guaranteed to agree.</p>
  */
-public class WickmothEntityModel extends EntityModel<WickmothEntity> {
+public class WickmothEntityModel extends EntityModel<HollowlightEntityRenderState> {
 
     private final ModelPart body;
     private final ModelPart wing_left;
@@ -51,8 +51,12 @@ public class WickmothEntityModel extends EntityModel<WickmothEntity> {
     }
 
     @Override
-    public void setAngles(WickmothEntity entity, float limbAngle, float limbDistance,
-                     float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(HollowlightEntityRenderState state) {
+        float limbAngle = state.limbFrequency;
+        float limbDistance = state.limbAmplitudeMultiplier;
+        float animationProgress = state.age;
+        float headYaw = state.yawDegrees;
+        float headPitch = state.pitch;
         this.body.pitch = MathHelper.cos(animationProgress * 0.2F) * 0.15F;
     }
 

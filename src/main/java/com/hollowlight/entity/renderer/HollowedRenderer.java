@@ -3,14 +3,13 @@ package com.hollowlight.entity.renderer;
 import com.hollowlight.entity.ModEntityModels;
 import com.hollowlight.entity.HollowedEntity;
 import com.hollowlight.entity.model.HollowedEntityModel;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 /** Renderer for {@link HollowedEntity}. */
-public class HollowedRenderer extends MobEntityRenderer<HollowedEntity, HollowedEntityModel> {
+public class HollowedRenderer
+        extends MobEntityRenderer<HollowedEntity, HollowlightEntityRenderState, HollowedEntityModel> {
 
     private static final Identifier TEXTURE = Identifier.of("hollowlight", "textures/entity/hollowed.png");
 
@@ -19,7 +18,17 @@ public class HollowedRenderer extends MobEntityRenderer<HollowedEntity, Hollowed
     }
 
     @Override
-    public Identifier getTexture(HollowedEntity entity) {
+    public HollowlightEntityRenderState createRenderState() {
+        return new HollowlightEntityRenderState();
+    }
+
+    @Override
+    public void updateRenderState(HollowedEntity entity, HollowlightEntityRenderState state, float tickDelta) {
+        super.updateRenderState(entity, state, tickDelta);
+    }
+
+    @Override
+    public Identifier getTexture(HollowlightEntityRenderState state) {
         return TEXTURE;
     }
 }

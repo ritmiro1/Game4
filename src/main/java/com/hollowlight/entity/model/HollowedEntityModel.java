@@ -1,6 +1,6 @@
 package com.hollowlight.entity.model;
 
-import com.hollowlight.entity.HollowedEntity;
+import com.hollowlight.entity.renderer.HollowlightEntityRenderState;
 import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.ModelPartBuilder;
@@ -18,7 +18,7 @@ import net.minecraft.util.math.MathHelper;
  * <p>Generated together with its texture (texture size 64x64) from a single geometry spec, so the UV
  * layout of the sheet and the cuboids here are guaranteed to agree.</p>
  */
-public class HollowedEntityModel extends EntityModel<HollowedEntity> {
+public class HollowedEntityModel extends EntityModel<HollowlightEntityRenderState> {
 
     private final ModelPart body;
     private final ModelPart head;
@@ -61,8 +61,12 @@ public class HollowedEntityModel extends EntityModel<HollowedEntity> {
     }
 
     @Override
-    public void setAngles(HollowedEntity entity, float limbAngle, float limbDistance,
-                     float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(HollowlightEntityRenderState state) {
+        float limbAngle = state.limbFrequency;
+        float limbDistance = state.limbAmplitudeMultiplier;
+        float animationProgress = state.age;
+        float headYaw = state.yawDegrees;
+        float headPitch = state.pitch;
         this.leg_left.pitch = MathHelper.cos(limbAngle * 0.6662F + 0.0F) * 1.1F * limbDistance;
         this.leg_right.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.1F * limbDistance;
         this.arm_left.pitch = MathHelper.cos(limbAngle * 0.6662F + 0.0F) * 0.7F * limbDistance;

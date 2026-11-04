@@ -3,14 +3,13 @@ package com.hollowlight.entity.renderer;
 import com.hollowlight.entity.ModEntityModels;
 import com.hollowlight.entity.LampkeeperEntity;
 import com.hollowlight.entity.model.LampkeeperEntityModel;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 /** Renderer for {@link LampkeeperEntity}. */
-public class LampkeeperRenderer extends MobEntityRenderer<LampkeeperEntity, LampkeeperEntityModel> {
+public class LampkeeperRenderer
+        extends MobEntityRenderer<LampkeeperEntity, HollowlightEntityRenderState, LampkeeperEntityModel> {
 
     private static final Identifier TEXTURE = Identifier.of("hollowlight", "textures/entity/lampkeeper.png");
 
@@ -19,7 +18,17 @@ public class LampkeeperRenderer extends MobEntityRenderer<LampkeeperEntity, Lamp
     }
 
     @Override
-    public Identifier getTexture(LampkeeperEntity entity) {
+    public HollowlightEntityRenderState createRenderState() {
+        return new HollowlightEntityRenderState();
+    }
+
+    @Override
+    public void updateRenderState(LampkeeperEntity entity, HollowlightEntityRenderState state, float tickDelta) {
+        super.updateRenderState(entity, state, tickDelta);
+    }
+
+    @Override
+    public Identifier getTexture(HollowlightEntityRenderState state) {
         return TEXTURE;
     }
 }

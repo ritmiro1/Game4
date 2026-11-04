@@ -3,14 +3,13 @@ package com.hollowlight.entity.renderer;
 import com.hollowlight.entity.ModEntityModels;
 import com.hollowlight.entity.WickmothEntity;
 import com.hollowlight.entity.model.WickmothEntityModel;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 /** Renderer for {@link WickmothEntity}. */
-public class WickmothRenderer extends MobEntityRenderer<WickmothEntity, WickmothEntityModel> {
+public class WickmothRenderer
+        extends MobEntityRenderer<WickmothEntity, HollowlightEntityRenderState, WickmothEntityModel> {
 
     private static final Identifier TEXTURE = Identifier.of("hollowlight", "textures/entity/wickmoth.png");
 
@@ -19,7 +18,17 @@ public class WickmothRenderer extends MobEntityRenderer<WickmothEntity, Wickmoth
     }
 
     @Override
-    public Identifier getTexture(WickmothEntity entity) {
+    public HollowlightEntityRenderState createRenderState() {
+        return new HollowlightEntityRenderState();
+    }
+
+    @Override
+    public void updateRenderState(WickmothEntity entity, HollowlightEntityRenderState state, float tickDelta) {
+        super.updateRenderState(entity, state, tickDelta);
+    }
+
+    @Override
+    public Identifier getTexture(HollowlightEntityRenderState state) {
         return TEXTURE;
     }
 }
