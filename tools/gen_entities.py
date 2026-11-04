@@ -404,7 +404,6 @@ public class HollowlightEntityRenderState extends LivingEntityRenderState {
     public int phase;
 
     /** Distance to the camera, in blocks; used to thin out ambient mobs that are too close. */
-    public float cameraDistance;
 }
 """
 
@@ -450,7 +449,6 @@ public class {class_name}Renderer
     @Override
     public void updateRenderState({entity_class} entity, HollowlightEntityRenderState state, float tickDelta) {{
         super.updateRenderState(entity, state, tickDelta);
-        state.cameraDistance = entity.distanceTo(this.dispatcher.camera.getFocusedEntity());
     }}
 
     @Override

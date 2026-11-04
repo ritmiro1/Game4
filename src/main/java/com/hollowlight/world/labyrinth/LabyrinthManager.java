@@ -43,19 +43,10 @@ public final class LabyrinthManager {
     }
 
     public static void bootstrap() {
-        Registry.register(Registries.CHUNK_GENERATOR, Hollowlight.id("labyrinth"),
-                LabyrinthChunkGeneratorHolder.CODEC);
-
         ServerChunkEvents.CHUNK_LOAD.register(LabyrinthManager::onChunkLoad);
         ServerTickEvents.END_WORLD_TICK.register(LabyrinthManager::tickWorld);
 
         Hollowlight.LOGGER.info("Labyrinth manager online: {} layers wired.", 5);
-    }
-
-    /** Indirection so the codec can be referenced without a hard circular import. */
-    private static final class LabyrinthChunkGeneratorHolder {
-        static final com.mojang.serialization.MapCodec<com.hollowlight.world.labyrinth.gen.LabyrinthChunkGenerator> CODEC =
-                com.hollowlight.world.labyrinth.gen.LabyrinthChunkGenerator.CODEC;
     }
 
     // ------------------------------------------------------------------ chest loot -------

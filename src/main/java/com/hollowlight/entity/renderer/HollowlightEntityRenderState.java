@@ -18,5 +18,4 @@ public class HollowlightEntityRenderState extends LivingEntityRenderState {
     public int phase;
 
     /** Distance to the camera, in blocks; used to thin out ambient mobs that are too close. */
-    public float cameraDistance;
 }

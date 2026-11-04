@@ -25,7 +25,6 @@ public class DrownedChoirRenderer
     @Override
     public void updateRenderState(DrownedChoirEntity entity, HollowlightEntityRenderState state, float tickDelta) {
         super.updateRenderState(entity, state, tickDelta);
-        state.cameraDistance = entity.distanceTo(this.dispatcher.camera.getFocusedEntity());
     }
 
     @Override
