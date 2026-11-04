@@ -30,10 +30,10 @@ public class DrownedChoirEntity extends HostileEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.12)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 5.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 24.0);
+                .add(EntityAttributes.MAX_HEALTH, 32.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.12)
+                .add(EntityAttributes.ATTACK_DAMAGE, 5.0)
+                .add(EntityAttributes.FOLLOW_RANGE, 24.0);
     }
 
     @Override
@@ -45,11 +45,6 @@ public class DrownedChoirEntity extends HostileEntity {
     }
 
     @Override
-    public boolean canBreatheInWater() {
-        return true;
-    }
-
-    @Override
     protected boolean isImmobile() {
         return false;
     }
@@ -57,6 +52,7 @@ public class DrownedChoirEntity extends HostileEntity {
     @Override
     public void tick() {
         super.tick();
+        this.keepAir();
         if (this.getWorld().isClient()) {
             return;
         }
@@ -112,9 +108,10 @@ public class DrownedChoirEntity extends HostileEntity {
         return 0.5F;
     }
 
-    @Override
-    public boolean canSpawn(World world) {
-        BlockPos pos = this.getBlockPos();
-        return world.getFluidState(pos).isIn(FluidTags.WATER) || super.canSpawn(world);
+    /** The choir never breathes, so it never runs out of air. */
+    private void keepAir() {
+        if (this.isSubmergedInWater()) {
+            this.setAir(this.getMaxAir());
+        }
     }
 }

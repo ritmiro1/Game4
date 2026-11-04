@@ -81,7 +81,7 @@ public class JournalScreen extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         this.renderBackground(context, mouseX, mouseY, delta);
-        context.drawTexture(TEXTURE, this.left, this.top, 0, 0, WIDTH, HEIGHT);
+        context.drawTexture(TEXTURE, this.left, this.top, 0.0F, 0.0F, WIDTH, HEIGHT, 320, 200);
         context.drawText(this.textRenderer, this.title, this.left + 12, this.top + 9, 0xE8DCC0, false);
 
         int found = ClientUiState.discoveredCount();

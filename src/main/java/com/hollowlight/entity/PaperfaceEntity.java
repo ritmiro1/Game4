@@ -29,10 +29,10 @@ public class PaperfaceEntity extends HostileEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.24)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0);
+                .add(EntityAttributes.MAX_HEALTH, 30.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.24)
+                .add(EntityAttributes.ATTACK_DAMAGE, 6.0)
+                .add(EntityAttributes.FOLLOW_RANGE, 32.0);
     }
 
     @Override

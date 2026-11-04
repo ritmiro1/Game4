@@ -33,8 +33,8 @@ public class EchoEntity extends PathAwareEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return PathAwareEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 1.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.12);
+                .add(EntityAttributes.MAX_HEALTH, 1.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.12);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class EchoEntity extends PathAwareEntity {
             PlayerEntity player = this.getWorld().getClosestPlayer(this, 16.0);
             if (player != null) {
                 this.noticed = true;
-                this.lookAt(net.minecraft.entity.EntityAnchorArgumentType.EntityAnchor.EYES, player.getEyePos());
+                this.lookAt(net.minecraft.command.argument.EntityAnchorArgumentType.EntityAnchor.EYES, player.getEyePos());
                 if (player instanceof ServerPlayerEntity serverPlayer) {
                     SanityManager.drain(serverPlayer, 0.8F, SanityManager.Cause.EVENT);
                 }
@@ -81,7 +81,7 @@ public class EchoEntity extends PathAwareEntity {
     }
 
     @Override
-    public boolean damage(DamageSource source, float amount) {
+    public boolean damage(net.minecraft.server.world.ServerWorld world, DamageSource source, float amount) {
         return false;
     }
 

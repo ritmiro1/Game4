@@ -60,7 +60,7 @@ public final class DimensionTeleport {
                 player.getYaw(), player.getPitch(), TeleportTarget.NO_OP);
         player.teleportTo(teleportTarget);
         player.setVelocity(0.0, 0.0, 0.0);
-        player.fallDistance = 0.0;
+        player.fallDistance = 0.0F;
         world.playSound(null, pos, ModSounds.GATE_OPEN, SoundCategory.PLAYERS, 0.8F, 0.8F);
     }
 }

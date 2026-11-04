@@ -68,7 +68,7 @@ public final class HorrorDirector {
         }
         EVENT_TIMERS.put(id, 0);
 
-        ServerWorld world = player.getWorld();
+        ServerWorld world = (ServerWorld) player.getWorld();
         Random random = world.getRandom();
         int roll = random.nextInt(100);
         float dread = 1.0F - sanity / SanityManager.MAX_SANITY;
@@ -115,7 +115,7 @@ public final class HorrorDirector {
 
     /** Called when the player makes a noise loud enough to be heard through stone. */
     public static void onLoudNoise(ServerPlayerEntity player, double radius) {
-        ServerWorld world = player.getWorld();
+        ServerWorld world = (ServerWorld) player.getWorld();
         LAST_NOISE.put(player.getUuid(), world.getTime());
         world.playSound(null, player.getBlockPos(), ModSounds.STINGER_SOFT, SoundCategory.AMBIENT, 0.5F, 0.8F);
         for (MobEntity mob : world.getEntitiesByClass(MobEntity.class,
@@ -152,7 +152,7 @@ public final class HorrorDirector {
     }
 
     private static void spawnAt(ServerPlayerEntity player, EntityType<?> type, int min, int max) {
-        ServerWorld world = player.getWorld();
+        ServerWorld world = (ServerWorld) player.getWorld();
         Random random = world.getRandom();
         for (int attempt = 0; attempt < 12; attempt++) {
             double angle = random.nextDouble() * Math.PI * 2.0;

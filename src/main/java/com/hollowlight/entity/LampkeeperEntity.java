@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -42,7 +43,7 @@ import java.util.List;
  * and starts taking; at the end she says the name correctly for the first time in eleven years,
  * and the fight is over.</p>
  */
-public class LampkeeperEntity extends HostileEntity implements net.minecraft.entity.boss.Boss {
+public class LampkeeperEntity extends HostileEntity {
 
     private final ServerBossBar bossBar = new ServerBossBar(
             Text.translatable("entity.hollowlight.lampkeeper.name").formatted(Formatting.GOLD),
@@ -60,12 +61,12 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 420.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.16)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 11.0)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 64.0)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1.0)
-                .add(EntityAttributes.GENERIC_ARMOR, 6.0);
+                .add(EntityAttributes.MAX_HEALTH, 420.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.16)
+                .add(EntityAttributes.ATTACK_DAMAGE, 11.0)
+                .add(EntityAttributes.FOLLOW_RANGE, 64.0)
+                .add(EntityAttributes.KNOCKBACK_RESISTANCE, 1.0)
+                .add(EntityAttributes.ARMOR, 6.0);
     }
 
     @Override
@@ -150,8 +151,8 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
         phase = newPhase;
         phaseCooldown = 200;
         actionCooldown = 40;
-        world.playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_PHASE, 1.0F, newPhase == 2 ? 1.0F : 0.8F);
-        world.playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_ROAR, 0.9F, 0.7F);
+        world.playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_PHASE, SoundCategory.HOSTILE, 1.0F, newPhase == 2 ? 1.0F : 0.8F);
+        world.playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_ROAR, SoundCategory.HOSTILE, 0.9F, 0.7F);
         String key = newPhase == 2 ? "hollowlight.lampkeeper.phase2" : "hollowlight.lampkeeper.phase3";
         for (PlayerEntity player : world.getPlayers()) {
             if (player.squaredDistanceTo(this) < 40.0 * 40.0) {
@@ -180,7 +181,7 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
             }
         }
         if (removed > 0) {
-            world.playSound(null, target.getBlockPos(), ModSounds.LANTERN_EMPTY, 0.8F, 0.7F);
+            world.playSound(null, target.getBlockPos(), ModSounds.LANTERN_EMPTY, SoundCategory.HOSTILE, 0.8F, 0.7F);
         } else {
             this.swingHand(net.minecraft.util.Hand.MAIN_HAND);
         }
@@ -188,7 +189,7 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
 
     /** A ring of remembered rooms expands outward, knocking the player back and hurting the mind. */
     private void memoryWave(PlayerEntity target, ServerWorld world) {
-        world.playSound(null, this.getBlockPos(), ModSounds.STINGER_DEEP, 1.0F, 0.6F);
+        world.playSound(null, this.getBlockPos(), ModSounds.STINGER_DEEP, SoundCategory.HOSTILE, 1.0F, 0.6F);
         Vec3d origin = this.getPos();
         for (PlayerEntity player : world.getPlayers()) {
             double distance = player.getPos().distanceTo(origin);
@@ -198,7 +199,7 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
             Vec3d push = player.getPos().subtract(origin).normalize().multiply(1.1);
             player.setVelocity(push.x, 0.55, push.z);
             player.velocityModified = true;
-            player.damage(world.getDamageSources().indirectMagic(this, this), 6.0F);
+            player.damage(world, world.getDamageSources().indirectMagic(this, this), 6.0F);
             if (player instanceof ServerPlayerEntity serverPlayer) {
                 SanityManager.drain(serverPlayer, 6.0F, SanityManager.Cause.ENTITY);
             }
@@ -218,9 +219,9 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
         Vec3d behind = target.getPos().subtract(target.getRotationVec(1.0F).multiply(3.0));
         BlockPos candidate = BlockPos.ofFloored(behind);
         if (world.isAir(candidate) && world.isAir(candidate.up()) && world.isAir(candidate.up(2))) {
-            world.playSound(null, this.getBlockPos(), ModSounds.STITCHER_ATTACK, 0.8F, 0.5F);
+            world.playSound(null, this.getBlockPos(), ModSounds.STITCHER_ATTACK, SoundCategory.HOSTILE, 0.8F, 0.5F);
             this.teleport(candidate.getX() + 0.5, candidate.getY(), candidate.getZ() + 0.5, false);
-            world.playSound(null, candidate, ModSounds.LAMPKEEPER_ROAR, 0.7F, 0.9F);
+            world.playSound(null, candidate, ModSounds.LAMPKEEPER_ROAR, SoundCategory.HOSTILE, 0.7F, 0.9F);
         }
     }
 
@@ -235,10 +236,10 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
     }
 
     @Override
-    public boolean tryAttack(net.minecraft.entity.Entity target) {
-        boolean hit = super.tryAttack(target);
+    public boolean tryAttack(net.minecraft.server.world.ServerWorld world, net.minecraft.entity.Entity target) {
+        boolean hit = super.tryAttack(world, target);
         if (hit) {
-            this.getWorld().playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_ROAR, 0.8F, 0.8F);
+            this.getWorld().playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_ROAR, SoundCategory.HOSTILE, 0.8F, 0.8F);
             if (target instanceof ServerPlayerEntity player) {
                 SanityManager.drain(player, 5.0F, SanityManager.Cause.ENTITY);
                 player.addStatusEffect(new net.minecraft.entity.effect.StatusEffectInstance(
@@ -255,7 +256,7 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
             return;
         }
         this.bossBar.clearPlayers();
-        world.playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_DEATH, 1.2F, 0.7F);
+        world.playSound(null, this.getBlockPos(), ModSounds.LAMPKEEPER_DEATH, SoundCategory.HOSTILE, 1.2F, 0.7F);
         world.spawnParticles(ParticleTypes.END_ROD, this.getX(), this.getY() + 2.0, this.getZ(),
                 160, 2.5, 2.5, 2.5, 0.03);
         // She leaves the thing she could not give away, and the light she carried.
@@ -265,8 +266,7 @@ public class LampkeeperEntity extends HostileEntity implements net.minecraft.ent
             world.spawnEntity(new ItemEntity(world, this.getX(), this.getY() + 1.0, this.getZ(),
                     new ItemStack(ModItems.MEMORY_SHARD)));
         }
-        List<PlayerEntity> nearby = world.getPlayers();
-        for (PlayerEntity player : nearby) {
+        for (PlayerEntity player : world.getPlayers()) {
             if (player.squaredDistanceTo(this) < 40.0 * 40.0) {
                 player.sendMessage(Text.translatable("hollowlight.lampkeeper.death")
                         .formatted(Formatting.GOLD, Formatting.ITALIC), false);

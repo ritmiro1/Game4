@@ -153,7 +153,7 @@ public final class ModItems {
 
     private static Item.Settings weapon(int durability, double damage, double speedDelta, Rarity rarity) {
         AttributeModifiersComponent modifiers = AttributeModifiersComponent.builder()
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                .add(EntityAttributes.ATTACK_DAMAGE,
                         new EntityAttributeModifier(Hollowlight.id("base_attack_damage"), damage,
                                 EntityAttributeModifier.Operation.ADD_VALUE),
                         AttributeModifierSlot.MAINHAND)

@@ -109,7 +109,7 @@ public final class EndingSequence {
     }
 
     private static void start(ServerPlayerEntity player, Choice choice) {
-        ServerWorld world = player.getWorld();
+        ServerWorld world = (ServerWorld) player.getWorld();
         long now = world.getServer().getTicks();
         BlockPos pos = player.getBlockPos();
         StoryManager.discover(player, "lampkeeper_whisper");

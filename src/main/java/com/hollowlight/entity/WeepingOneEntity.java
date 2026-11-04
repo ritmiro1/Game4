@@ -45,9 +45,9 @@ public class WeepingOneEntity extends PathAwareEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return PathAwareEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.16)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 20.0);
+                .add(EntityAttributes.MAX_HEALTH, 40.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.16)
+                .add(EntityAttributes.FOLLOW_RANGE, 20.0);
     }
 
     @Override
@@ -99,8 +99,8 @@ public class WeepingOneEntity extends PathAwareEntity {
     }
 
     @Override
-    public boolean damage(DamageSource source, float amount) {
-        boolean damaged = super.damage(source, amount);
+    public boolean damage(net.minecraft.server.world.ServerWorld world, DamageSource source, float amount) {
+        boolean damaged = super.damage(world, source, amount);
         if (damaged && source.getAttacker() instanceof ServerPlayerEntity player) {
             SanityManager.drain(player, 2.5F, SanityManager.Cause.ENTITY);
             player.sendMessage(net.minecraft.text.Text.translatable("hollowlight.weeping.struck")

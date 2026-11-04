@@ -22,8 +22,8 @@ public class AshMothEntity extends PathAwareEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return PathAwareEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2);
+                .add(EntityAttributes.MAX_HEALTH, 3.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.2);
     }
 
     @Override

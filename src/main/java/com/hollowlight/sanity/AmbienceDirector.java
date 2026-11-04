@@ -78,7 +78,7 @@ public final class AmbienceDirector {
             return;
         }
         long[] slots = COOLDOWNS.computeIfAbsent(player.getUuid(), key -> new long[3]);
-        ServerWorld world = player.getWorld();
+        ServerWorld world = (ServerWorld) player.getWorld();
         Random random = world.getRandom();
         float dread = SanityManager.ambientTwist(player);
 

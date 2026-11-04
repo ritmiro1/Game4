@@ -40,8 +40,8 @@ public class WickmothEntity extends PathAwareEntity {
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return PathAwareEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.32)
+                .add(EntityAttributes.MAX_HEALTH, 6.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.32)
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.4);
     }
 

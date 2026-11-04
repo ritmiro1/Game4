@@ -32,7 +32,7 @@ public class LabyrinthMapScreen extends Screen {
         this.renderBackground(context, mouseX, mouseY, delta);
         int left = (this.width - WIDTH) / 2;
         int top = (this.height - HEIGHT) / 2;
-        context.drawTexture(TEXTURE, left, top, 0, 0, WIDTH, HEIGHT);
+        context.drawTexture(TEXTURE, left, top, 0.0F, 0.0F, WIDTH, HEIGHT, 256, 232);
         context.drawText(this.textRenderer, this.title, left + 12, top + 9, 0xE8DCC0, false);
 
         int layer = ClientUiState.mapLayer();

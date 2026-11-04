@@ -45,15 +45,24 @@ TARGETS = {
 
 
 def find_jar():
+    """Loom keeps the remapped jar under minecraftMaven; only the named one has Yarn classes."""
     candidates = []
     for root in (os.path.expanduser("~/.gradle/caches/fabric-loom"),
-                 os.path.expanduser("~/.gradle/caches/modules-2")):
+                 os.path.expanduser("~/.gradle/caches/modules-2"),
+                 ".gradle/loom-cache", os.path.expanduser("~/.gradle/caches/fabric-loom/1.21.4")):
         for path in glob.glob(os.path.join(root, "**", "*.jar"), recursive=True):
             name = os.path.basename(path).lower()
-            if "named" in name and "source" not in name and "minecraft" in name:
-                candidates.append(path)
-    candidates.sort(key=lambda p: ("merged" not in p, len(p)))
-    return candidates[0] if candidates else None
+            if "minecraft" not in name or "source" in name or "intermediary" in name:
+                continue
+            if "merged" not in name:
+                continue
+            candidates.append(path)
+    for path in sorted(candidates, key=len, reverse=True):
+        probe = subprocess.run(["javap", "-cp", path, "net.minecraft.client.render.entity.LivingEntityRenderer"],
+                               capture_output=True, text=True)
+        if probe.returncode == 0:
+            return path
+    return None
 
 
 def javap(jar, cls):
