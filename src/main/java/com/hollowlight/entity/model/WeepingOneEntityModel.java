@@ -31,7 +31,7 @@ public class WeepingOneEntityModel extends EntityModel<HollowlightEntityRenderSt
         super(root);
         this.body = root.getChild("body");
         this.head = root.getChild("body").getChild("head");
-        this.hair = root.getChild("head").getChild("hair");
+        this.hair = root.getChild("body").getChild("head").getChild("hair");
         this.arm_left = root.getChild("body").getChild("arm_left");
         this.arm_right = root.getChild("body").getChild("arm_right");
         this.knee = root.getChild("knee");
@@ -46,6 +46,9 @@ public class WeepingOneEntityModel extends EntityModel<HollowlightEntityRenderSt
         ModelPartData head = body.addChild("head",
                 ModelPartBuilder.create().uv(21, 0).cuboid(-3.5F, -7.0F, -3.5F, 7.0F, 7.0F, 7.0F),
                 ModelTransform.pivot(0.0F, -10.0F, 0.0F));
+        ModelPartData hair = head.addChild("hair",
+                ModelPartBuilder.create().uv(0, 15).cuboid(-4.0F, 0.0F, -4.0F, 8.0F, 9.0F, 1.0F),
+                ModelTransform.pivot(0.0F, -7.0F, 0.0F));
         ModelPartData arm_left = body.addChild("arm_left",
                 ModelPartBuilder.create().uv(19, 15).cuboid(0.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F),
                 ModelTransform.pivot(3.0F, -9.0F, 0.0F));

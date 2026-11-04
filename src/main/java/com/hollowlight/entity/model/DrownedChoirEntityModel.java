@@ -31,7 +31,7 @@ public class DrownedChoirEntityModel extends EntityModel<HollowlightEntityRender
         super(root);
         this.body = root.getChild("body");
         this.head = root.getChild("body").getChild("head");
-        this.jaw = root.getChild("head").getChild("jaw");
+        this.jaw = root.getChild("body").getChild("head").getChild("jaw");
         this.arm_left = root.getChild("body").getChild("arm_left");
         this.arm_right = root.getChild("body").getChild("arm_right");
         this.tail = root.getChild("tail");
@@ -46,6 +46,9 @@ public class DrownedChoirEntityModel extends EntityModel<HollowlightEntityRender
         ModelPartData head = body.addChild("head",
                 ModelPartBuilder.create().uv(21, 0).cuboid(-4.0F, -8.0F, -3.0F, 8.0F, 8.0F, 7.0F),
                 ModelTransform.pivot(0.0F, -12.0F, 0.0F));
+        ModelPartData jaw = head.addChild("jaw",
+                ModelPartBuilder.create().uv(0, 17).cuboid(-3.0F, 0.0F, -3.0F, 6.0F, 3.0F, 6.0F),
+                ModelTransform.pivot(0.0F, -1.0F, 0.0F));
         ModelPartData arm_left = body.addChild("arm_left",
                 ModelPartBuilder.create().uv(25, 17).cuboid(0.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F),
                 ModelTransform.pivot(3.0F, -11.0F, 0.0F));

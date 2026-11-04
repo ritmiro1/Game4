@@ -95,10 +95,10 @@ def blockstates():
             "frame": tex("sealed_gate"),
         },
         "elements": [
-            {"from": [0, 0, 0], "to": [16, 3, 16], "faces": {"all": {"texture": "#frame"}}},
-            {"from": [0, 13, 0], "to": [16, 16, 16], "faces": {"all": {"texture": "#frame"}}},
-            {"from": [0, 3, 0], "to": [3, 13, 16], "faces": {"all": {"texture": "#frame"}}},
-            {"from": [13, 3, 0], "to": [16, 13, 16], "faces": {"all": {"texture": "#frame"}}},
+            {"from": [0, 0, 0], "to": [16, 3, 16], "faces": {d: {"texture": "#frame"} for d in ("north", "south", "east", "west", "up", "down")}},
+            {"from": [0, 13, 0], "to": [16, 16, 16], "faces": {d: {"texture": "#frame"} for d in ("north", "south", "east", "west", "up", "down")}},
+            {"from": [0, 3, 0], "to": [3, 13, 16], "faces": {d: {"texture": "#frame"} for d in ("north", "south", "east", "west", "up", "down")}},
+            {"from": [13, 3, 0], "to": [16, 13, 16], "faces": {d: {"texture": "#frame"} for d in ("north", "south", "east", "west", "up", "down")}},
         ],
     }
     write(os.path.join(BLOCK_MODELS, "sealed_gate_open.json"), frame)

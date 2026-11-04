@@ -269,6 +269,21 @@ def java_float(value):
     return f"{value:.1f}F"
 
 
+def part_chain(part, parts):
+    """Names from the root down to (and including) this part, so the constructor can walk them."""
+    by_name = {p.name: p for p in parts}
+    chain = [part.name]
+    cursor = part
+    guard = 0
+    while cursor.parent is not None:
+        chain.append(cursor.parent)
+        cursor = by_name[cursor.parent]
+        guard += 1
+        if guard > 32:
+            raise SystemExit("model part cycle at " + part.name)
+    return list(reversed(chain))
+
+
 def emit_model(name, spec):
     class_name = "".join(part.capitalize() for part in name.split("_")) + "EntityModel"
     entity_class = "".join(part.capitalize() for part in name.split("_")) + "Entity"
@@ -305,25 +320,26 @@ def emit_model(name, spec):
     lines.append("    public " + class_name + "(ModelPart root) {")
     lines.append("        super(root);")
     for part in parts:
-        if part.parent is None:
-            lines.append("        this." + part.name + " = root.getChild(\"" + part.name + "\");")
-        else:
-            lines.append("        this." + part.name + " = root.getChild(\"" + part.parent
-                         + "\").getChild(\"" + part.name + "\");")
+        chain = part_chain(part, parts)
+        accessor = "root"
+        for link in chain:
+            accessor += '.getChild("' + link + '")'
+        lines.append("        this." + part.name + " = " + accessor + ";")
     lines.append("    }")
     lines.append("")
     lines.append("    public static TexturedModelData getTexturedModelData() {")
     lines.append("        ModelData modelData = new ModelData();")
     lines.append("        ModelPartData root = modelData.getRoot();")
-    for part in top_parts:
-        lines.append("        ModelPartData " + part.name + " = root.addChild(\"" + part.name + "\",")
+    def emit_part(part, accessor):
+        lines.append("        ModelPartData " + part.name + " = " + accessor + ".addChild(\""
+                     + part.name + "\",")
         lines.append("                " + cuboid(part) + ",")
         lines.append("                " + transform(part) + ");")
         for child in [p for p in parts if p.parent == part.name]:
-            lines.append("        ModelPartData " + child.name + " = " + part.name + ".addChild(\""
-                         + child.name + "\",")
-            lines.append("                " + cuboid(child) + ",")
-            lines.append("                " + transform(child) + ");")
+            emit_part(child, part.name)
+
+    for part in top_parts:
+        emit_part(part, "root")
     lines.append("        return TexturedModelData.of(modelData, " + str(spec["size"]) + ", "
                  + str(spec["size"]) + ");")
     lines.append("    }")
