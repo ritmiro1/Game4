@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hollowlight:grave_dust"
+    },
+    {
+      "item": "hollowlight:salt_of_hollowmere"
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:seventh_seam_dust",
+    "count": 2
+  }
+}

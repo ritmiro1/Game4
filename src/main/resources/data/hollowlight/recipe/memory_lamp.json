@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GEG",
+    "GLG",
+    "GEG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "E": {
+      "item": "hollowlight:hollow_ember"
+    },
+    "L": {
+      "item": "hollowlight:lamp_glass"
+    }
+  },
+  "result": {
+    "id": "hollowlight:memory_lamp",
+    "count": 1
+  }
+}

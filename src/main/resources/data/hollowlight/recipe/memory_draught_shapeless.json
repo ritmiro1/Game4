@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hollowlight:memory_shard"
+    },
+    {
+      "item": "hollowlight:sweet_ash"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:memory_draught",
+    "count": 1
+  }
+}

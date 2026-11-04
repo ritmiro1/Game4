@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hollowlight:torn_journal_page"
+    },
+    {
+      "item": "hollowlight:root_planks"
+    },
+    {
+      "item": "hollowlight:living_fiber"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:broken_music_box",
+    "count": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:depth/the_memorial_depths",
+  "display": {
+    "icon": {
+      "id": "hollowlight:memory_shard"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.hidden.you_did_not_have_to.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.hidden.you_did_not_have_to.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

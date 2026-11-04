@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "hollowlight:grave_dust"
+  },
+  "result": {
+    "id": "hollowlight:salt_of_hollowmere",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

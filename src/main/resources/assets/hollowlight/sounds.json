@@ -1,0 +1,409 @@
+{
+  "ambience.halls": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambience/halls"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambience.halls"
+  },
+  "ambience.drowned": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambience/drowned"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambience.drowned"
+  },
+  "ambience.living": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambience/living"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambience.living"
+  },
+  "ambience.memorial": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambience/memorial"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambience.memorial"
+  },
+  "ambience.heart": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambience/heart"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambience.heart"
+  },
+  "ambience.safe": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambience/safe"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambience.safe"
+  },
+  "ambient.drip": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/drip"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.drip"
+  },
+  "ambient.rumble": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/rumble"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.rumble"
+  },
+  "ambient.wind": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/wind"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.wind"
+  },
+  "ambient.stone_settle": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/stone_settle"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.stone_settle"
+  },
+  "ambient.whisper": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/whisper"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.whisper"
+  },
+  "ambient.whisper_close": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/whisper_close"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.whisper_close"
+  },
+  "ambient.breath": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/breath"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.breath"
+  },
+  "ambient.heartbeat": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/heartbeat"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.heartbeat"
+  },
+  "ambient.bell": {
+    "sounds": [
+      {
+        "name": "hollowlight:ambient/bell"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.ambient.bell"
+  },
+  "entity.hollowed.idle": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/hollowed/idle"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.hollowed.idle"
+  },
+  "entity.hollowed.hurt": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/hollowed/hurt"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.hollowed.hurt"
+  },
+  "entity.hollowed.death": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/hollowed/death"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.hollowed.death"
+  },
+  "entity.hollowed.step": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/hollowed/step"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.hollowed.step"
+  },
+  "entity.paperface.watch": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/paperface/watch"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.paperface.watch"
+  },
+  "entity.paperface.attack": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/paperface/attack"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.paperface.attack"
+  },
+  "entity.stitcher.ambient": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/stitcher/ambient"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.stitcher.ambient"
+  },
+  "entity.stitcher.attack": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/stitcher/attack"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.stitcher.attack"
+  },
+  "entity.weeping.cry": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/weeping/cry"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.weeping.cry"
+  },
+  "entity.weeping.soft": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/weeping/soft"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.weeping.soft"
+  },
+  "entity.choir.sing": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/choir/sing"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.choir.sing"
+  },
+  "entity.moth.flutter": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/moth/flutter"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.moth.flutter"
+  },
+  "entity.echo.voice": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/echo/voice"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.echo.voice"
+  },
+  "entity.lampkeeper.roar": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/lampkeeper/roar"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.lampkeeper.roar"
+  },
+  "entity.lampkeeper.phase": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/lampkeeper/phase"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.lampkeeper.phase"
+  },
+  "entity.lampkeeper.death": {
+    "sounds": [
+      {
+        "name": "hollowlight:entity/lampkeeper/death"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.entity.lampkeeper.death"
+  },
+  "block.gate_open": {
+    "sounds": [
+      {
+        "name": "hollowlight:block/gate_open"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.block.gate_open"
+  },
+  "block.gate_locked": {
+    "sounds": [
+      {
+        "name": "hollowlight:block/gate_locked"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.block.gate_locked"
+  },
+  "block.altar_activate": {
+    "sounds": [
+      {
+        "name": "hollowlight:block/altar_activate"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.block.altar_activate"
+  },
+  "block.trap_trigger": {
+    "sounds": [
+      {
+        "name": "hollowlight:block/trap_trigger"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.block.trap_trigger"
+  },
+  "item.page_turn": {
+    "sounds": [
+      {
+        "name": "hollowlight:item/page_turn"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.item.page_turn"
+  },
+  "item.key_insert": {
+    "sounds": [
+      {
+        "name": "hollowlight:item/key_insert"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.item.key_insert"
+  },
+  "item.lantern_light": {
+    "sounds": [
+      {
+        "name": "hollowlight:item/lantern_light"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.item.lantern_light"
+  },
+  "item.lantern_empty": {
+    "sounds": [
+      {
+        "name": "hollowlight:item/lantern_empty"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.item.lantern_empty"
+  },
+  "item.lore_discover": {
+    "sounds": [
+      {
+        "name": "hollowlight:item/lore_discover"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.item.lore_discover"
+  },
+  "item.memory_return": {
+    "sounds": [
+      {
+        "name": "hollowlight:item/memory_return"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.item.memory_return"
+  },
+  "horror.stinger_soft": {
+    "sounds": [
+      {
+        "name": "hollowlight:horror/stinger_soft"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.horror.stinger_soft"
+  },
+  "horror.stinger_deep": {
+    "sounds": [
+      {
+        "name": "hollowlight:horror/stinger_deep"
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.horror.stinger_deep"
+  },
+  "music.halls": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/halls",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.halls"
+  },
+  "music.drowned": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/drowned",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.drowned"
+  },
+  "music.living": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/living",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.living"
+  },
+  "music.memorial": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/memorial",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.memorial"
+  },
+  "music.heart": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/heart",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.heart"
+  },
+  "music.boss": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/boss",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.boss"
+  },
+  "music.ending": {
+    "sounds": [
+      {
+        "name": "hollowlight:music/ending",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.hollowlight.music.ending"
+  }
+}

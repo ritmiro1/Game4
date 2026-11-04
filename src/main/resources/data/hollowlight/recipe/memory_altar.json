@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DSD",
+    "SES",
+    "DSD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:deepslate"
+    },
+    "S": {
+      "item": "hollowlight:salt_of_hollowmere"
+    },
+    "E": {
+      "item": "hollowlight:hollow_ember"
+    }
+  },
+  "result": {
+    "id": "hollowlight:memory_altar",
+    "count": 1
+  }
+}

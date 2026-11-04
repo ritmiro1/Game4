@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:heart_of_the_hollow",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": 4,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:memory_shard",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

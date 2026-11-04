@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "hollowlight:living_fiber"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:wax_bandage",
+    "count": 2
+  }
+}

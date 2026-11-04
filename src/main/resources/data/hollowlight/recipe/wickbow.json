@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GS ",
+    "G W",
+    "GS "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:stick"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "item": "hollowlight:oiled_wick"
+    }
+  },
+  "result": {
+    "id": "hollowlight:wickbow",
+    "count": 1
+  }
+}

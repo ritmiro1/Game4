@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "hollowlight:shrine_bricks"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.depth.root.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.depth.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "hollowlight:textures/gui/advancement_background.png"
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

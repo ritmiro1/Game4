@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:story/it_was_never_your_fault",
+  "display": {
+    "icon": {
+      "id": "hollowlight:iver_whistle"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.story.somebody_was_looking.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.story.somebody_was_looking.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

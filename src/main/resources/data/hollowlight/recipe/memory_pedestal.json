@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    " P ",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone_bricks"
+    },
+    "P": {
+      "item": "hollowlight:pale_crystal"
+    }
+  },
+  "result": {
+    "id": "hollowlight:memory_pedestal",
+    "count": 2
+  }
+}

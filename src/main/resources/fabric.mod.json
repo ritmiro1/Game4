@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "hollowlight",
+  "version": "${version}",
+  "name": "Hollowlight — The Lamplighter's Descent",
+  "description": "A psychological horror mod about grief, memory and the lamps we carry for the dead. Beneath a forgotten shrine near your world's surface lies a labyrinth built out of the memories of a woman who went down looking for her brother and gave herself away, one memory at a time. Bring a lantern. Listen for a voice calling a name that is not yours.",
+  "authors": [
+    "The Hollowlight Authors"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ritmiro1/Game4",
+    "issues": "https://github.com/ritmiro1/Game4/issues"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "icon": "assets/hollowlight/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.hollowlight.Hollowlight"
+    ],
+    "client": [
+      "com.hollowlight.HollowlightClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": ">=0.110.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21"
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [ "horror", "adventure" ]
+    }
+  }
+}

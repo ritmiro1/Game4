@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "hollowlight:block/bioluminescent_growth"
+  }
+}

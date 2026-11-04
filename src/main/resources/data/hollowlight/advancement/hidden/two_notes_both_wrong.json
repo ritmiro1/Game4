@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:story/somebody_was_looking",
+  "display": {
+    "icon": {
+      "id": "hollowlight:iver_whistle"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.hidden.two_notes_both_wrong.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.hidden.two_notes_both_wrong.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

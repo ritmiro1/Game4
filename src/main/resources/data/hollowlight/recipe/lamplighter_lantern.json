@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "GEG",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "E": {
+      "item": "hollowlight:hollow_ember"
+    }
+  },
+  "result": {
+    "id": "hollowlight:lamplighter_lantern",
+    "count": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.3,
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 925218,
+    "sky_color": 0,
+    "water_color": 1987676,
+    "water_fog_color": 664104,
+    "mood_sound": {
+      "sound": "hollowlight:ambience.drowned",
+      "tick_delay": 4200,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "ambient_sound": "hollowlight:ambient.wind",
+    "music": [
+      {
+        "sound": "hollowlight:music.drowned",
+        "min_delay": 12000,
+        "max_delay": 24000,
+        "replace_current_music": true
+      }
+    ]
+  },
+  "carvers": {},
+  "features": [],
+  "spawners": {},
+  "spawn_costs": {}
+}

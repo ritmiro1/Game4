@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "link=0": {
+      "model": "hollowlight:block/threshold_gate"
+    },
+    "link=1": {
+      "model": "hollowlight:block/threshold_gate"
+    },
+    "link=2": {
+      "model": "hollowlight:block/threshold_gate"
+    },
+    "link=3": {
+      "model": "hollowlight:block/threshold_gate"
+    },
+    "link=4": {
+      "model": "hollowlight:block/threshold_gate"
+    },
+    "link=5": {
+      "model": "hollowlight:block/threshold_gate"
+    }
+  }
+}

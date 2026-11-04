@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:torn_journal_page",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:water_stained_photograph",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:unsent_letter",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:carved_token",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:memory_shard",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hollowlight:broken_music_box",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

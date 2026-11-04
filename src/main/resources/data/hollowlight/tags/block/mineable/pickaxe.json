@@ -1,0 +1,31 @@
+{
+  "values": [
+    "hollowlight:forgotten_stone",
+    "hollowlight:forgotten_bricks",
+    "hollowlight:cracked_forgotten_bricks",
+    "hollowlight:drowned_stone",
+    "hollowlight:drowned_bricks",
+    "hollowlight:barnacled_stone",
+    "hollowlight:living_wall",
+    "hollowlight:veined_living_stone",
+    "hollowlight:memorial_stone",
+    "hollowlight:pale_memorial_tile",
+    "hollowlight:tally_marks",
+    "hollowlight:heart_stone",
+    "hollowlight:heart_crystal_block",
+    "hollowlight:rusted_grate",
+    "hollowlight:pale_crystal",
+    "hollowlight:lamp_glass",
+    "hollowlight:hollow_lantern",
+    "hollowlight:memory_lamp",
+    "hollowlight:memory_pedestal",
+    "hollowlight:whispering_stone",
+    "hollowlight:shrine_bricks",
+    "hollowlight:shrine_lantern",
+    "hollowlight:forgotten_pillar",
+    "hollowlight:memory_altar",
+    "hollowlight:sealed_gate",
+    "hollowlight:inscription_stone",
+    "hollowlight:threshold_gate"
+  ]
+}

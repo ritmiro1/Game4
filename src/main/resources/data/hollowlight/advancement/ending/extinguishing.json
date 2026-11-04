@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:story/the_quiet_after",
+  "display": {
+    "icon": {
+      "id": "hollowlight:heart_of_the_hollow"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.ending.extinguishing.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.ending.extinguishing.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

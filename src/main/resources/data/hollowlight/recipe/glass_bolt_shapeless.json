@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_pane"
+    },
+    {
+      "item": "minecraft:flint"
+    },
+    {
+      "item": "hollowlight:bone_stitch"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:glass_bolt",
+    "count": 4
+  }
+}

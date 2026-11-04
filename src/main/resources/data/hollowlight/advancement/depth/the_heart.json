@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:depth/the_memorial_depths",
+  "display": {
+    "icon": {
+      "id": "hollowlight:heart_stone"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.depth.the_heart.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.depth.the_heart.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

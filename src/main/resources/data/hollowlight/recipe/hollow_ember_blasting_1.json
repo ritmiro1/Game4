@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": {
+    "item": "hollowlight:seventh_seam_dust"
+  },
+  "result": {
+    "id": "hollowlight:hollow_ember",
+    "count": 1
+  },
+  "experience": 0.5,
+  "cookingtime": 100
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "hollowlight:sweet_ash"
+  },
+  "result": {
+    "id": "minecraft:glowstone_dust",
+    "count": 1
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

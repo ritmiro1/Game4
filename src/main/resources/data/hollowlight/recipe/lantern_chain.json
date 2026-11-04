@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NIN",
+    " C ",
+    " S "
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "I": {
+      "item": "minecraft:chain"
+    },
+    "C": {
+      "item": "hollowlight:hollow_ember"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "hollowlight:lantern_chain",
+    "count": 1
+  }
+}

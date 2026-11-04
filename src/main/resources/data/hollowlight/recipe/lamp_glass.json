@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "GDG",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "D": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result": {
+    "id": "hollowlight:lamp_glass",
+    "count": 4
+  }
+}

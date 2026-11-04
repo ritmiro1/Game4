@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CBC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "B": {
+      "item": "hollowlight:bone_stitch"
+    }
+  },
+  "result": {
+    "id": "hollowlight:whispering_stone",
+    "count": 2
+  }
+}

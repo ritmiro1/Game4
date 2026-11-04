@@ -1,0 +1,12 @@
+{
+  "type": "hollowlight:layer_4",
+  "generator": {
+    "type": "hollowlight:labyrinth",
+    "layer": 4,
+    "floor_y": 46,
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "hollowlight:layer_4"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hollowlight:hollow_ember"
+    },
+    {
+      "item": "hollowlight:salt_of_hollowmere"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:lamp_oil",
+    "count": 2
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:story/the_first_trade",
+  "display": {
+    "icon": {
+      "id": "hollowlight:unsent_letter"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.story.what_it_wants.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.story.what_it_wants.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

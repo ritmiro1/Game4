@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:depth/the_drowned_corridors",
+  "display": {
+    "icon": {
+      "id": "hollowlight:bioluminescent_growth"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.story.a_list_of_names.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.story.a_list_of_names.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hollowlight:corrupted_growth"
+    },
+    {
+      "item": "hollowlight:corrupted_growth"
+    }
+  ],
+  "result": {
+    "id": "hollowlight:living_fiber",
+    "count": 3
+  }
+}

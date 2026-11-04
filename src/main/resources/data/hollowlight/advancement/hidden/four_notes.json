@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:depth/the_memorial_depths",
+  "display": {
+    "icon": {
+      "id": "hollowlight:broken_music_box"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.hidden.four_notes.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.hidden.four_notes.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

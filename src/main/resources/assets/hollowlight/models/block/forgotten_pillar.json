@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "hollowlight:block/forgotten_pillar_top",
+    "side": "hollowlight:block/forgotten_pillar_side"
+  }
+}

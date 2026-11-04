@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "hollowlight:block/sealed_gate"
+    },
+    "open=true": {
+      "model": "hollowlight:block/sealed_gate_open"
+    }
+  }
+}

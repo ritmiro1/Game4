@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "hollowlight:block/forgotten_pillar"
+    },
+    "axis=z": {
+      "model": "hollowlight:block/forgotten_pillar",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "hollowlight:block/forgotten_pillar",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

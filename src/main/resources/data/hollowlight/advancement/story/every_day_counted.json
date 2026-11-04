@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:depth/the_forgotten_halls",
+  "display": {
+    "icon": {
+      "id": "hollowlight:tally_marks"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.story.every_day_counted.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.story.every_day_counted.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

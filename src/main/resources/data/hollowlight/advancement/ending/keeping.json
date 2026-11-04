@@ -1,0 +1,28 @@
+{
+  "parent": "hollowlight:story/the_quiet_after",
+  "display": {
+    "icon": {
+      "id": "hollowlight:lamplighter_lantern"
+    },
+    "title": {
+      "translate": "advancement.hollowlight.ending.keeping.title"
+    },
+    "description": {
+      "translate": "advancement.hollowlight.ending.keeping.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}
