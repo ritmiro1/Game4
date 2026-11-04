@@ -131,8 +131,8 @@ public class JournalScreen extends Screen {
             return;
         }
         if (!ClientUiState.hasDiscovered(id)) {
-            context.drawTextWrapped(this.textRenderer, Text.translatable("gui.hollowlight.undiscovered"),
-                    bodyX, bodyY, 140, 0x6E634F);
+            context.drawWrappedText(this.textRenderer, Text.translatable("gui.hollowlight.undiscovered"),
+                    bodyX, bodyY, 140, 0x6E634F, false);
             return;
         }
         context.drawText(this.textRenderer, Text.literal(entry.title()).formatted(Formatting.BOLD),

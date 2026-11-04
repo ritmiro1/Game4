@@ -53,8 +53,8 @@ public class EndingChoiceScreen extends Screen {
         int left = (this.width - WIDTH) / 2;
         int top = (this.height - HEIGHT) / 2;
         context.drawTexture(TEXTURE, left, top, 0.0F, 0.0F, WIDTH, HEIGHT, 280, 180);
-        context.drawTextWrapped(this.textRenderer, Text.translatable("gui.hollowlight.ending.body"),
-                left + 20, top + 18, WIDTH - 40, 0xC9B994);
+        context.drawWrappedText(this.textRenderer, Text.translatable("gui.hollowlight.ending.body"),
+                left + 20, top + 18, WIDTH - 40, 0xC9B994, false);
         super.render(context, mouseX, mouseY, delta);
     }
 

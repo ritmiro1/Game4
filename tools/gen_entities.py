@@ -391,7 +391,7 @@ def transform(part):
 
 RENDER_STATE = """package com.hollowlight.entity.renderer;
 
-import net.minecraft.client.render.entity.state.MobEntityRenderState;
+import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 
 /**
  * One render state shared by the nine residents.
@@ -400,7 +400,7 @@ import net.minecraft.client.render.entity.state.MobEntityRenderState;
  * entities, so anything an animation needs has to be copied into a state object first. The mod
  * needs very little: a few per-entity extras that the generated models read.</p>
  */
-public class HollowlightEntityRenderState extends MobEntityRenderState {
+public class HollowlightEntityRenderState extends LivingEntityRenderState {
 
     /** 0..1, how lit this entity currently is (used to bob the Lamplighter's lantern). */
     public float glow;
