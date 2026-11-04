@@ -67,8 +67,8 @@ The project now compiles and packages on GitHub Actions with JDK 21 (Temurin):
 
 ```
 ./gradlew build   ->  BUILD SUCCESSFUL
-artifact          ->  hollowlight-1.0.2.jar (3,196,644 bytes)
-release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.3
+artifact          ->  hollowlight-1.0.3.jar (3,196,728 bytes)
+release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.4
 
 ```
 
@@ -101,6 +101,13 @@ both the audio files and `ModSounds`, translation keys, loot-table item ids, and
 dimension/dimension_type/biome data. That check is the reason the model bug can no longer reach a
 player: reintroducing it fails the build with
 `DrownedChoirEntityModel.java: constructor walks jaw but root has no child 'head'`.
+
+1.0.2 then crashed at world creation: all five biomes failed to parse, because
+`effects.music` has been a weighted list (`[{"data": {...}, "weight": 1}]`) since 1.20.5 and
+`carvers` is a `RegistryEntryList` (a list or tag string) rather than the old map. Registry
+loading is all-or-nothing, so five bad biome files meant the game could not open a world at all.
+1.0.3 fixes both in `tools/gen_data.py` and extends the asset checker to validate biome shape,
+recipes, advancements and tags.
 
 Still unproven: world generation, entity behaviour, sound design and every GUI screen have
 only been compiled and statically checked, never watched running.

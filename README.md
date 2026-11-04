@@ -19,24 +19,24 @@ screen shake, no flashing lights, and no gore. The horror is architectural.
 **Compiled and packaged by GitHub Actions on JDK 21** (`./gradlew build`, Minecraft 1.21.4,
 Yarn 1.21.4+build.8, Fabric Loader 0.16.9+, Fabric API 0.119.4+1.21.4):
 
-- jar: <https://github.com/ritmiro1/Game4/releases/download/v1.0.3/hollowlight-1.0.2.jar>
-  (3,196,644 bytes)
-- release page: <https://github.com/ritmiro1/Game4/releases/tag/v1.0.3>
+- jar: <https://github.com/ritmiro1/Game4/releases/download/v1.0.4/hollowlight-1.0.3.jar>
+  (3,196,728 bytes)
+- release page: <https://github.com/ritmiro1/Game4/releases/tag/v1.0.4>
 - workflow: <https://github.com/ritmiro1/Game4/actions>
 
 Install: put the jar and **Fabric API 0.119.4+1.21.4** into `.minecraft/mods`, select the
-Fabric 1.21.4 profile, launch. The mod list should read `hollowlight 1.0.2`.
-
-Version history, because it matters when something breaks:
+Fabric 1.21.4 profile, launch. The mod list should read `hollowlight 1.0.3`.
 
 | build | what happened |
 | --- | --- |
 | 1.0.0 | crashed at launch: the labyrinth chunk generator was registered twice |
-| 1.0.1 | black screen: a block model used the illegal face name `"all"`, and the drowned choir's model tree was built one nesting level too shallow (`Can't find part head`), which aborted the resource reload |
-| 1.0.2 | those are fixed, and `tools/check_assets.py` now fails the build on that whole family of data errors |
+| 1.0.1 | black screen: a block model used the illegal face name `"all"`, and the drowned choir's model tree was built one nesting level too shallow |
+| 1.0.2 | those fixed, plus an asset checker in CI |
+| 1.0.3 | crashed when creating a world: biome JSON used the pre-1.20.5 music format and the old map-form `carvers`; both would abort registry loading |
 
-The jar compiles and gets through mod initialisation and resource loading. World generation, mob
-behaviour, sound and the GUIs have still never been watched running in a real game session.
+The jar compiles, initialises and loads resources, and the datapack registries it ships now parse.
+World generation, mob behaviour, sound and the GUIs have still never been watched running in a
+real game session.
 
 ---
 
