@@ -67,8 +67,9 @@ The project now compiles and packages on GitHub Actions with JDK 21 (Temurin):
 
 ```
 ./gradlew build   ->  BUILD SUCCESSFUL
-artifact          ->  hollowlight-1.0.0.jar (3,198,607 bytes)
-release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.1
+artifact          ->  hollowlight-1.0.1.jar (3,196,443 bytes)
+release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.2
+
 ```
 
 Getting there took several rounds against the real 1.21.4 mappings: attribute field names
@@ -80,8 +81,15 @@ takes three type arguments, `setAngles(state)`), `EntityType.Builder.build(key)`
 
 ## What these checks cannot prove
 
-The mod has never been launched in a running game: registration, worldgen, AI, sound and the
-GUI have only been proven to compile and link, not to behave. Expect rough edges in 1.0.0.
+Version 1.0.0 compiled but crashed at launch: the labyrinth chunk generator was registered
+twice (`ModWorldgen` and `LabyrinthManager`), so Fabric threw *adding duplicate key
+'worldgen/chunk_generator / hollowlight:labyrinth'* before the game window opened. 1.0.1
+removes the second registration, so mod initialisation now completes — blocks, items, entities,
+sounds, particles, payloads, screen handlers and the labyrinth manager all register without
+complaint.
+
+Still unproven: world generation, entity behaviour, sound design and every GUI screen have
+only been compiled, never watched running.
 
 
 There is no Java compiler and no Minecraft artifact in this authoring

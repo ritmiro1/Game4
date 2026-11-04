@@ -17,16 +17,20 @@ screen shake, no flashing lights, and no gore. The horror is architectural.
 ## Download
 
 **Compiled and packaged by GitHub Actions on JDK 21** (`./gradlew build`, Minecraft 1.21.4,
-Yarn 1.21.4+build.8, Fabric Loader 0.16.9, Fabric API 0.119.4+1.21.4):
+Yarn 1.21.4+build.8, Fabric Loader 0.16.9+, Fabric API 0.119.4+1.21.4):
 
-- jar: <https://github.com/ritmiro1/Game4/releases/download/v1.0.1/hollowlight-1.0.0.jar>
-  (3,198,607 bytes)
-- release page: <https://github.com/ritmiro1/Game4/releases/tag/v1.0.1>
+- jar: <https://github.com/ritmiro1/Game4/releases/download/v1.0.2/hollowlight-1.0.1.jar>
+  (3,196,443 bytes)
+- release page: <https://github.com/ritmiro1/Game4/releases/tag/v1.0.2>
 - workflow: <https://github.com/ritmiro1/Game4/actions>
 
 Install: put the jar and **Fabric API 0.119.4+1.21.4** into `.minecraft/mods`, select the
-Fabric 1.21.4 profile, launch. The build compiles cleanly; it has not been play-tested
-in-game, so treat 1.0.0 as a first playable snapshot rather than a polished release.
+Fabric 1.21.4 profile, launch. `hollowlight 1.0.1` is the first build whose entry points
+actually run: 1.0.0 registered the labyrinth chunk generator twice and died during
+`onInitialize`.
+
+The build compiles cleanly and gets through mod initialisation; it has not been played
+end to end, so treat it as a playable snapshot rather than a polished release.
 
 Building it yourself needs the same toolchain: `./gradlew build` (first run downloads ~250 MB
 of dependencies).
