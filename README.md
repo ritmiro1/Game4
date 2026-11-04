@@ -14,39 +14,22 @@ screen shake, no flashing lights, and no gore. The horror is architectural.
 
 ---
 
-## Build status — read this first
+## Download
 
-**The jar is not included.** It could not be compiled in the environment where this source was
-written: that sandbox has no Java compiler and cannot reach Maven, Mojang or Gradle
-(`maven.fabricmc.net`, `repo1.maven.org`, `libraries.minecraft.net`,
-`piston-meta.mojang.com`, `services.gradle.org` are all blocked), so Minecraft, Yarn and
-Fabric API artifacts cannot be resolved. Fabric Loom needs all of them before it can compile a
-single class.
+**Compiled and packaged by GitHub Actions on JDK 21** (`./gradlew build`, Minecraft 1.21.4,
+Yarn 1.21.4+build.8, Fabric Loader 0.16.9, Fabric API 0.119.4+1.21.4):
 
-What *is* verified is recorded in [VALIDATION.md](VALIDATION.md), produced by
-`python tools/check.py`:
+- jar: <https://github.com/ritmiro1/Game4/releases/download/v1.0.1/hollowlight-1.0.0.jar>
+  (3,198,607 bytes)
+- release page: <https://github.com/ritmiro1/Game4/releases/tag/v1.0.1>
+- workflow: <https://github.com/ritmiro1/Game4/actions>
 
-* all 99 Java sources parse (tree-sitter, error-node detection);
-* every `net.minecraft.*` import is checked against the **Yarn 1.21.4** named class list and
-  every `net.fabricmc.*` import against the **fabric-api 0.119.4+1.21.4** source tree;
-* every registry symbol used (`ModItems`, `ModBlocks`, `ModSounds`, `ModEntities`, …) exists;
-* every blockstate, item model definition, texture reference, GUI texture and entity asset
-  exists; every model's texture exists;
-* every recipe ingredient and result resolves; every loot table, advancement parent, dimension,
-  dimension type and biome file referenced exists;
-* every translation key used by the code, every advancement title/description and every sound
-  subtitle exists in `en_us.json`;
-* all 50 `.ogg` files decode, are registered in `sounds.json`, and match the `SoundEvent` ids in
-  `ModSounds`.
+Install: put the jar and **Fabric API 0.119.4+1.21.4** into `.minecraft/mods`, select the
+Fabric 1.21.4 profile, launch. The build compiles cleanly; it has not been play-tested
+in-game, so treat 1.0.0 as a first playable snapshot rather than a polished release.
 
-To produce the jar on any machine with normal internet access:
-
-```bash
-./gradlew build          # → build/libs/hollowlight-1.0.0.jar
-```
-
-Gradle 8.11 wrapper, Loom 1.9, Java 21. First run downloads ~250 MB of dependencies and takes a
-few minutes.
+Building it yourself needs the same toolchain: `./gradlew build` (first run downloads ~250 MB
+of dependencies).
 
 ---
 

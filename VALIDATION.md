@@ -61,7 +61,28 @@ yarn classes indexed: 5737, fabric classes indexed: 1023
 all imports resolve
 ```
 
+## Compilation — verified in CI
+
+The project now compiles and packages on GitHub Actions with JDK 21 (Temurin):
+
+```
+./gradlew build   ->  BUILD SUCCESSFUL
+artifact          ->  hollowlight-1.0.0.jar (3,198,607 bytes)
+release           ->  https://github.com/ritmiro1/Game4/releases/tag/v1.0.1
+```
+
+Getting there took several rounds against the real 1.21.4 mappings: attribute field names
+(`EntityAttributes.ATTACK_SPEED`, no `GENERIC_` prefix), block interaction split into
+`onUseWithItem(...)`, `ItemCooldownManager` keyed on `ItemStack`, `LivingEntity.damage(ServerWorld, ...)`,
+`DrawContext.drawTexture(RenderLayer factory, ...)` + `drawWrappedText(...)`, the entity
+render-state API (`Model` is typed on `EntityRenderState`, `render` is final, `LivingEntityRenderer`
+takes three type arguments, `setAngles(state)`), `EntityType.Builder.build(key)` and so on.
+
 ## What these checks cannot prove
+
+The mod has never been launched in a running game: registration, worldgen, AI, sound and the
+GUI have only been proven to compile and link, not to behave. Expect rough edges in 1.0.0.
+
 
 There is no Java compiler and no Minecraft artifact in this authoring
 environment (Maven, Mojang and Gradle hosts are unreachable), so the project
