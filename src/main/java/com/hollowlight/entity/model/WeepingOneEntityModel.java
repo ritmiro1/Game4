@@ -73,9 +73,4 @@ public class WeepingOneEntityModel extends EntityModel<HollowlightEntityRenderSt
         this.head.pitch = 0.9F;
     }
 
-    @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
-        this.body.render(matrices, vertices, light, overlay);
-        this.knee.render(matrices, vertices, light, overlay);
-    }
 }

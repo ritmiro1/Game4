@@ -6,6 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.render.RenderLayer;
 
 /**
  * The sanity readout: a small lantern glyph that dims, and a vignette that closes in.

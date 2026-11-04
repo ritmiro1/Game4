@@ -87,9 +87,4 @@ public class LampkeeperEntityModel extends EntityModel<HollowlightEntityRenderSt
         this.body.pitch = MathHelper.cos(animationProgress * 0.05F) * 0.05F;
     }
 
-    @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
-        this.body.render(matrices, vertices, light, overlay);
-        this.skirt.render(matrices, vertices, light, overlay);
-    }
 }

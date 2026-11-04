@@ -361,12 +361,6 @@ def emit_model(name, spec):
         lines.append("        this.body.pitch = MathHelper.cos(animationProgress * 0.05F) * 0.05F;")
     lines.append("    }")
     lines.append("")
-    lines.append("    @Override")
-    lines.append("    public void render(MatrixStack matrices, VertexConsumer vertices, int light,"
-                 " int overlay) {")
-    for part in top_parts:
-        lines.append("        this." + part.name + ".render(matrices, vertices, light, overlay);")
-    lines.append("    }")
     lines.append("}")
 
     path = os.path.join(MODEL_DIR, class_name + ".java")

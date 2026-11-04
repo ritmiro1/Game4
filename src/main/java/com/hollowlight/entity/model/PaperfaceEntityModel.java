@@ -76,10 +76,4 @@ public class PaperfaceEntityModel extends EntityModel<HollowlightEntityRenderSta
         this.head.pitch = headPitch * 0.017453292F;
     }
 
-    @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
-        this.body.render(matrices, vertices, light, overlay);
-        this.leg_left.render(matrices, vertices, light, overlay);
-        this.leg_right.render(matrices, vertices, light, overlay);
-    }
 }

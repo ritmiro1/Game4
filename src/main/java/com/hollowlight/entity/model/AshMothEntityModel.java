@@ -56,8 +56,4 @@ public class AshMothEntityModel extends EntityModel<HollowlightEntityRenderState
         this.body.pitch = MathHelper.cos(animationProgress * 0.2F) * 0.15F;
     }
 
-    @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
-        this.body.render(matrices, vertices, light, overlay);
-    }
 }

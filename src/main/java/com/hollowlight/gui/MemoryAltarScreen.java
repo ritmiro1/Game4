@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.client.render.RenderLayer;
 
 /**
  * The memory altar interface. Three sockets, one result, and a lot of dark stone.

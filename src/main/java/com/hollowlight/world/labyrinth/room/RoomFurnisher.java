@@ -5,6 +5,7 @@ import com.hollowlight.world.labyrinth.LabyrinthPalette;
 import com.hollowlight.world.labyrinth.PlacedRoom;
 import com.hollowlight.world.labyrinth.gen.BlockCanvas;
 import com.hollowlight.world.labyrinth.gen.LabyrinthBuilder;
+import com.hollowlight.registry.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 
