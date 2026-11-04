@@ -68,9 +68,15 @@ def javap(jar, cls):
 
 
 def main():
-    jar = find_jar()
-    if not jar:
-        print("!! no remapped Minecraft jar found in the Loom cache")
+    jar = sys.argv[1] if len(sys.argv) > 1 else find_jar()
+    if not jar or not os.path.isfile(jar):
+        print("!! no remapped Minecraft jar found")
+        found = []
+        for root in (os.path.expanduser("~/.gradle/caches"), ".gradle"):
+            for path in glob.glob(os.path.join(root, "**", "*.jar"), recursive=True):
+                if "minecraft" in os.path.basename(path).lower():
+                    found.append(path)
+        print("\n".join(found[:20]) or "no minecraft jars at all")
         return 1
     print(f"## jar: {os.path.basename(jar)}\n")
     pending_descriptor = {}

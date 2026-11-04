@@ -46,7 +46,10 @@ jobs:
       - name: Introspect Minecraft (diagnostics)
         if: always()
         run: |
-          python3 tools/diag.py > diag.txt 2>&1 || true
+          ./gradlew -q printCompileClasspath --console=plain 2>/dev/null | grep -m1 -i "minecraft.*named" > mcp.txt || true
+          MC=$(cat mcp.txt 2>/dev/null | tr -d '[:space:]')
+          echo "jar candidate: $MC"
+          python3 tools/diag.py "$MC" > diag.txt 2>&1 || true
           head -c 60000 diag.txt > diag-body.txt
           GH_TOKEN=${{ secrets.GITHUB_TOKEN }} gh api "repos/${{ github.repository }}/issues/1/comments" -f body="$(cat diag-body.txt)" > /dev/null || true
 

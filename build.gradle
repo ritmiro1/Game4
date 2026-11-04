@@ -45,3 +45,10 @@ jar {
         rename { "${it}_${project.base.archivesName.get()}" }
     }
 }
+
+// Prints the compile classpath, so CI can introspect the remapped Minecraft jar with javap.
+tasks.register('printCompileClasspath') {
+    doLast {
+        sourceSets.main.compileClasspath.each { println it }
+    }
+}
