@@ -97,12 +97,16 @@ def worldgen():
                     "offset": 2.0,
                 },
                 "ambient_sound": f"{MOD_ID}:ambient.wind",
+                # 1.20.5+ wants a weighted list of music tracks, not a bare MusicSound:
+                # {"data": MusicSound, "weight": n}. A bare object fails with
+                # "No key weight in MapLike[...]" and kills the whole biome registry load.
                 "music": [
-                    {"sound": f"{MOD_ID}:music.{['halls', 'drowned', 'living', 'memorial', 'heart'][index - 1]}",
-                     "min_delay": 12000, "max_delay": 24000, "replace_current_music": True}
+                    {"weight": 1,
+                     "data": {"sound": f"{MOD_ID}:music.{['halls', 'drowned', 'living', 'memorial', 'heart'][index - 1]}",
+                              "min_delay": 12000, "max_delay": 24000, "replace_current_music": True}}
                 ],
             },
-            "carvers": {},
+            "carvers": [],
             "features": [],
             "spawners": {},
             "spawn_costs": {},

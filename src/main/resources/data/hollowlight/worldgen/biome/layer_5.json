@@ -16,14 +16,17 @@
     "ambient_sound": "hollowlight:ambient.wind",
     "music": [
       {
-        "sound": "hollowlight:music.heart",
-        "min_delay": 12000,
-        "max_delay": 24000,
-        "replace_current_music": true
+        "weight": 1,
+        "data": {
+          "sound": "hollowlight:music.heart",
+          "min_delay": 12000,
+          "max_delay": 24000,
+          "replace_current_music": true
+        }
       }
     ]
   },
-  "carvers": {},
+  "carvers": [],
   "features": [],
   "spawners": {},
   "spawn_costs": {}

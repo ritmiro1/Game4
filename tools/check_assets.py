@@ -321,6 +321,111 @@ def check_worldgen() -> None:
                 fail("dimension/%s: biome %s does not exist" % (name, biome))
 
 
+
+# ------------------------------------------------------------------ biome / recipe shapes ---
+
+def check_biome_shapes() -> None:
+    """Each of these shapes was wrong at least once and each one aborts a registry load."""
+    for path in sorted(glob.glob(os.path.join(DATA, "worldgen/biome", "*.json")) +
+                       glob.glob(os.path.join(DATA, "biome", "*.json"))):
+        name = os.path.relpath(path, DATA)
+        data = load_json(path) or {}
+
+        carvers = data.get("carvers")
+        if isinstance(carvers, dict):
+            fail("%s: carvers must be a list of configured carvers (or a tag string), not a map"
+                 % name)
+        elif not isinstance(carvers, (list, str)):
+            fail("%s: carvers must be a list or a tag string" % name)
+
+        features = data.get("features")
+        if features is not None:
+            if not isinstance(features, list):
+                fail("%s: features must be a list of per-step lists" % name)
+            else:
+                for step, entry in enumerate(features):
+                    if not isinstance(entry, list):
+                        fail("%s: features[%d] must be a list" % (name, step))
+
+        for key in ("spawners", "spawn_costs"):
+            if key in data and not isinstance(data[key], dict):
+                fail("%s: %s must be an object" % (name, key))
+
+        effects = data.get("effects", {})
+        music = effects.get("music")
+        if music is not None:
+            if not isinstance(music, list):
+                fail("%s: effects.music must be a list of {data, weight} entries "
+                     "(1.20.5+ weighted music); a bare object aborts biome loading" % name)
+            else:
+                for index, entry in enumerate(music):
+                    if not isinstance(entry, dict) or "data" not in entry or "weight" not in entry:
+                        fail("%s: effects.music[%d] needs both \'data\' and \'weight\'"
+                             % (name, index))
+                    else:
+                        sound = entry["data"].get("sound")
+                        if not isinstance(sound, str):
+                            fail("%s: effects.music[%d].data.sound must be a sound id"
+                                 % (name, index))
+
+        for key in ("ambient_sound",):
+            if key in effects and not isinstance(effects[key], str):
+                fail("%s: effects.%s must be a sound id" % (name, key))
+        mood = effects.get("mood_sound")
+        if mood is not None and (not isinstance(mood, dict) or "sound" not in mood):
+            fail("%s: effects.mood_sound needs a \'sound\' id" % name)
+
+
+def check_recipes() -> None:
+    for path in sorted(glob.glob(os.path.join(DATA, "recipe", "**", "*.json"), recursive=True) +
+                       glob.glob(os.path.join(DATA, "recipes", "**", "*.json"), recursive=True)):
+        name = os.path.relpath(path, DATA)
+        recipe = load_json(path)
+        if recipe is None:
+            continue
+        kind = recipe.get("type")
+        if not isinstance(kind, str):
+            # 1.21.4 keeps the type inside an object: {"type": "minecraft:crafting_shaped", ...}
+            fail("%s: missing recipe type" % name)
+            continue
+        short = kind.split(":", 1)[1] if ":" in kind else kind
+        if short == "crafting_shaped":
+            if not isinstance(recipe.get("pattern"), list):
+                fail("%s: shaped recipe needs a pattern list" % name)
+            if not isinstance(recipe.get("key"), dict):
+                fail("%s: shaped recipe needs a key object" % name)
+        elif short == "crafting_shapeless":
+            if not isinstance(recipe.get("ingredients"), list):
+                fail("%s: shapeless recipe needs an ingredients list" % name)
+        if "result" not in recipe:
+            fail("%s: recipe has no result" % name)
+
+
+def check_advancements() -> None:
+    for path in sorted(glob.glob(os.path.join(DATA, "advancement", "**", "*.json"), recursive=True)):
+        name = os.path.relpath(path, DATA)
+        advancement = load_json(path)
+        if advancement is None:
+            continue
+        criteria = advancement.get("criteria")
+        if not criteria:
+            fail("%s: advancement has no criteria" % name)
+        parent = advancement.get("parent")
+        if isinstance(parent, str) and parent.startswith("hollowlight:"):
+            wanted = os.path.join(DATA, "advancement", parent.split(":", 1)[1] + ".json")
+            if not os.path.exists(wanted):
+                fail("%s: parent advancement %s does not exist" % (name, parent))
+
+
+def check_tags() -> None:
+    for path in glob.glob(os.path.join(DATA, "tags", "**", "*.json"), recursive=True):
+        name = os.path.relpath(path, DATA)
+        tag = load_json(path)
+        if tag is None:
+            continue
+        if not isinstance(tag.get("values"), list):
+            fail("%s: tag has no values list" % name)
+
 def main() -> int:
     models = check_models()
     check_blockstates(models)
@@ -330,6 +435,10 @@ def main() -> int:
     check_lang()
     check_loot_tables()
     check_worldgen()
+    check_biome_shapes()
+    check_recipes()
+    check_advancements()
+    check_tags()
 
     if problems:
         print("asset checks failed: %d problem(s)" % len(problems))
