@@ -260,7 +260,7 @@ static void PlayUI(Sound s, float vol) { if (!IsAudioDeviceReady()) return; SetS
 // фоновая музыка: мягкие аккорды + шум воды
 static void UpdateMusic(void) {
     if (!IsAudioDeviceReady()) return;
-    while (IsAudioStreamProcessed(music)) {
+    for (int guard = 0; guard < 4 && IsAudioStreamProcessed(music); guard++) {
         int n = 2048; static const float chords[4][3] = { { 220.0f, 261.63f, 329.63f }, { 174.61f, 220.0f, 261.63f }, { 196.0f, 246.94f, 293.66f }, { 164.81f, 196.0f, 246.94f } };
         static float br = 0; static float lp2 = 0;
         for (int i = 0; i < n; i++) {
@@ -966,7 +966,7 @@ int main(void) {
         font = LoadFontFromMemory(".ttf", FONT_DATA, (int)FONT_DATA_SIZE, 48, cps, n); SetTextureFilter(font.texture, TEXTURE_FILTER_BILINEAR); }
     InitRender();
     sndSplash = MakeSound(11025, 0); sndPlop = MakeSound(6000, 1); sndStep = MakeSound(2500, 2); sndClick = MakeSound(1500, 3); sndCatch = MakeSound(22050, 4); sndSnap = MakeSound(5000, 5); sndBite = MakeSound(6000, 6); sndEat = MakeSound(12000, 7); sndCast = MakeSound(7000, 8); sndAch = MakeSound(26000, 9); sndReel = MakeSound(8000, 10);
-    music = LoadAudioStream(22050, 16, 1); SetAudioStreamVolume(music, S.musicVol); PlayAudioStream(music);
+    SetAudioStreamBufferSizeDefault(2048); music = LoadAudioStream(22050, 16, 1); SetAudioStreamVolume(music, S.musicVol); PlayAudioStream(music);
     BuildWorld(); // мир для фона меню
     { Vector3 dir = { cosf(pierYaw), 0, sinf(pierYaw) }; playerPos = Vector3Add(pierPos, Vector3Scale(dir, -6.0f)); playerPos.y = TerrainHeight(playerPos.x, playerPos.z); playerYaw = atan2f(dir.x, dir.z); playerYawSmooth = playerYaw; camTargetSmooth = playerPos; camPosSmooth = Vector3Add(playerPos, (Vector3){ 0, 4, -8 }); }
     cam.fovy = 60; cam.up = (Vector3){ 0, 1, 0 }; cam.projection = CAMERA_PERSPECTIVE; float menuTime = loaded ? S.timeOfDay : 8.5f; (void)menuTime;
